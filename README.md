@@ -9,7 +9,8 @@ Expose the limits of theatrical "AI sound languages" and provide a robust, verif
 Use Case :
 Access Badge
 Use Case_ Secure Mission Transfer for Autonomous Drones
-Use Cases  EVs, Drones, and Autonomous Charging Systems
+Use Cases  EVs, Drones, and Autonomous Charging Systems, Warehouse, Confidential zones
+
 ....
 
 ### Version
