@@ -2,7 +2,7 @@
 # Real-Gibberlink — short-range secure handshake (audio + visual)
 
 # Real-GibberLink: Secure Directional Communication Protocol
-
+![Marketing illustration](1_reflections/Marketing%20illustrati.png)
 ### Purpose
 Expose the limits of theatrical "AI sound languages" and provide a robust, verifiable alternative with ultra-short-range pairing (100-300ms) and long-range directional communication (10-200m) using coupled audio-visual-laser channels for enhanced security and reliability.
 
