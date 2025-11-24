@@ -1,14 +1,37 @@
-## Build targets
-- Rust 1.75+; Android NDK r26; Kotlin 1.9.
-- Python 3.11 for bench scripts.
+# Contributing to RealGibber
 
-## Dev workflow
-1. Fork + branch: `feature/...`, `fix/...`
-2. Tests: `cargo test` + `pytest bench/tests`
-3. Benchmarks: `bench/run_latency.py --runs 100 --distance 1.0`
-4. PR checklist: tests green, docs updated, reproducible results attached.
+Thank you for your interest in contributing to RealGibber! This document provides guidelines for contributors.
 
-## Style & reviews
-- Evidence over opinions. Include measurements and configs.
-- No vendor shaming. Compare features and data neutrally.
+## Quick Start
 
+1. **Fork and Clone**: Fork the repository and clone it locally
+2. **Setup Environment**: Follow the detailed setup in `Documentations/CONTRIBUTING.md`
+3. **Create Branch**: Use `feature/`, `bugfix/`, or `security/` prefixes
+4. **Make Changes**: Follow code style guidelines
+5. **Test**: Run all tests and ensure security compliance
+6. **Submit PR**: Create a pull request with detailed description
+
+## Key Guidelines
+
+- **Security First**: All changes must maintain or improve security
+- **Code Quality**: Follow Rust/Android/TypeScript standards
+- **Testing**: Minimum 80% coverage, security-focused tests
+- **Documentation**: Update docs for any API changes
+
+## Detailed Instructions
+
+For comprehensive contributing guidelines, including setup instructions, code standards, testing procedures, and security considerations, please see [`Documentations/CONTRIBUTING.md`](Documentations/CONTRIBUTING.md).
+
+## Security Issues
+
+🚨 **Never report security vulnerabilities through public issues**
+
+Report security issues to: security@realgibber.com
+
+## Code of Conduct
+
+Please review our [Code of Conduct](Documentations/CONTRIBUTING.md#code-of-conduct) in the detailed contributing guide.
+
+---
+
+**Thank you for helping make RealGibber more secure and reliable!** 🚀
