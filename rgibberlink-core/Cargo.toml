@@ -39,7 +39,7 @@ reed-solomon-erasure = "6.0"
 reqwest = { version = "0.11", features = ["json"], optional = true }
 
 # Python bindings
-pyo3 = { version = "0.19", features = ["extension-module"], optional = true }
+pyo3 = { version = "0.24", features = ["extension-module"], optional = true }
 hkdf = "0.12.4"
 clap = { version = "4.0", features = ["derive"], optional = true }
 
