@@ -3,9 +3,9 @@
 [![Rust](https://img.shields.io/badge/rust-1.70+-000000.svg?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
 [![Android](https://img.shields.io/badge/android-11+-3DDC84.svg?style=for-the-badge&logo=android)](https://developer.android.com/)
 [![Python](https://img.shields.io/badge/python-3.8+-3776AB.svg?style=for-the-badge&logo=python)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-A comprehensive suite of secure directional communication protocols for autonomous systems, featuring ultra-short-range pairing (100-300ms) and long-range directional communication (10-200m) using coupled audio-visual-laser channels.
+A comprehensive suite of secure directional communication protocols designed for mission-critical autonomous systems, featuring ultra-short-range pairing (100-300ms) and long-range directional communication (10-200m) using coupled audio-visual-laser channels.
 
 ## 🎯 Overview
 

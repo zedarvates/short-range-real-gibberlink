@@ -157,9 +157,9 @@
 //! let range_detector = RangeDetector::new();
 //! laser_engine.enable_adaptive_mode(std::sync::Arc::new(tokio::sync::Mutex::new(range_detector)));
 //!
-//! // Start long-range handshake
+//! // Start handshake (long-range mode will be auto-detected)
 //! let mut link = RgibberLink::new();
-//! link.initiate_long_range_handshake().await?;
+//! link.initiate_handshake().await?;
 //!
 //! // Engines handle coupled channel communication
 //! // ... handshake completes with validation ...
@@ -173,17 +173,12 @@
 //! ### Adaptive Mode with Environmental Monitoring
 //! ```rust
 //! use gibberlink_core::{RgibberLink, LaserEngine, SecurityManager};
-//! use gibberlink_core::SecurityLevel;
 //!
 //! # async fn adaptive_example() -> Result<(), Box<dyn std::error::Error>> {
 //! let mut link = RgibberLink::new();
 //!
-//! // Configure for auto mode with environmental adaptation
-//! link.set_communication_mode(gibberlink_core::CommunicationMode::Auto).await?;
-//!
 //! // Initialize security manager with weather monitoring
 //! let security_config = gibberlink_core::SecurityConfig {
-//!     level: SecurityLevel::High,
 //!     environmental_monitoring: true,
 //!     ..Default::default()
 //! };
@@ -333,9 +328,13 @@ pub mod performance_monitor;
 pub mod mission;
 pub mod weather;
 pub mod audit;
+pub mod hierarchical;
 
 #[cfg(feature = "python")]
 pub mod python_bindings;
+
+#[cfg(feature = "wasm")]
+pub mod wasm;
 
 pub use crypto::{CryptoEngine, CryptoError};
 pub use audio::{AudioEngine, AudioError};
@@ -344,12 +343,13 @@ pub use visual::{VisualEngine, VisualError, VisualPayload};
 pub use laser::{LaserEngine, LaserError, LaserConfig, ReceptionConfig, AlignmentStatus, LaserType, ModulationScheme};
 pub use range_detector::{RangeDetector, RangeDetectorError, RangingConfig, RangeMeasurement, RangeDetectorCategory, RangeEnvironmentalConditions};
 pub use optical_ecc::{OpticalECC, OpticalECCError, OpticalQualityMetrics, AdaptiveECCConfig, AtmosphericCondition, RangeCategory};
-pub use protocol::{ProtocolEngine, ProtocolError, ProtocolState};
+pub use protocol::{ProtocolEngine, ProtocolError, ProtocolState, ChannelQuality};
 pub use channel_validator::{ChannelValidator, ValidationError, ValidationPhase, ChannelData, ChannelType, ValidationConfig, ValidationMetrics};
 pub use security::{SecurityManager, SecurityError, SecurityConfig, SecurityLevel, PermissionType, PermissionGrant, PermissionScope, PeerIdentity, TrustLevel, EnvironmentalConditions, WeatherCondition, TimeOfDay, CommandExecution};
 pub use fallback::{FallbackManager, FallbackError, FallbackConfig, FallbackMode, FallbackStatus, ChannelFailure, ChannelHealth, SessionSnapshot};
 pub use performance_monitor::{PerformanceMonitor, PerformanceError, PerformanceMetrics, PerformanceConfig, PerformancePreset, BenchmarkResult, EnvironmentalFactors};
 pub use audit::{AuditSystem, AuditEntry, SecurityAlert, AuditEventType, AuditSeverity, AuditActor, AuditOperation, create_audit_entry};
+pub use hierarchical::{HierarchicalProtocolEngine, MilitaryRank, CommandType, HierarchicalMessage, HierarchicalState, HierarchyPresence};
 
 use std::sync::Arc;
 use tokio::sync::Mutex;
@@ -421,6 +421,7 @@ pub struct RgibberLink {
     #[allow(dead_code)]
     pending_responses: Arc<Mutex<std::collections::HashMap<String, tokio::sync::oneshot::Sender<ApiResponse>>>>,
     last_activity: Arc<Mutex<std::time::Instant>>,
+    performance_monitor: Arc<Mutex<Option<PerformanceMonitor>>>,
 }
 
 impl RgibberLink {
@@ -431,11 +432,12 @@ impl RgibberLink {
             message_queue: Arc::new(Mutex::new(Vec::new())),
             pending_responses: Arc::new(Mutex::new(std::collections::HashMap::new())),
             last_activity: Arc::new(Mutex::new(std::time::Instant::now())),
+            performance_monitor: Arc::new(Mutex::new(None)),
         }
     }
 
     /// Initiate the handshake as the sender
-    pub async fn initiate_handshake(&self) -> Result<(), ProtocolError> {
+    pub async fn initiate_handshake(&mut self) -> Result<(), ProtocolError> {
         self.protocol.lock().await.initiate_handshake().await
     }
 
@@ -445,7 +447,7 @@ impl RgibberLink {
     }
 
     /// Process scanned QR payload
-    pub async fn process_qr_payload(&self, qr_data: &[u8]) -> Result<(), ProtocolError> {
+    pub async fn process_qr_payload(&mut self, qr_data: &[u8]) -> Result<(), ProtocolError> {
         self.protocol.lock().await.process_qr_payload(qr_data).await
     }
 
@@ -582,6 +584,73 @@ impl RgibberLink {
         *self.last_activity.lock().await
     }
 
+    /// Initialize performance monitoring with communication engines
+    pub async fn initialize_performance_monitor(
+        &self,
+        laser_engine: Option<Arc<Mutex<LaserEngine>>>,
+        ultrasonic_engine: Option<Arc<Mutex<UltrasonicBeamEngine>>>,
+        range_detector: Option<Arc<Mutex<RangeDetector>>>,
+    ) -> Result<(), PerformanceError> {
+        let protocol_engine = Some(self.protocol.clone());
+        let monitor = PerformanceMonitor::new(1000) // 1000 history entries
+            .with_engines(laser_engine, ultrasonic_engine, range_detector, protocol_engine);
+
+        *self.performance_monitor.lock().await = Some(monitor);
+        Ok(())
+    }
+
+    /// Start performance monitoring
+    pub async fn start_performance_monitoring(&self) -> Result<(), PerformanceError> {
+        if let Some(monitor) = self.performance_monitor.lock().await.as_ref() {
+            monitor.start_monitoring().await
+        } else {
+            Err(PerformanceError::InvalidMetrics)
+        }
+    }
+
+    /// Stop performance monitoring
+    pub async fn stop_performance_monitoring(&self) {
+        if let Some(monitor) = self.performance_monitor.lock().await.as_ref() {
+            monitor.stop_monitoring().await;
+        }
+    }
+
+    /// Get current performance metrics
+    pub async fn get_performance_metrics(&self) -> Option<PerformanceMetrics> {
+        if let Some(monitor) = self.performance_monitor.lock().await.as_ref() {
+            monitor.get_current_metrics().await
+        } else {
+            None
+        }
+    }
+
+    /// Run performance benchmark suite
+    pub async fn run_performance_benchmarks(&self, duration_secs: u64) -> Result<Vec<BenchmarkResult>, PerformanceError> {
+        if let Some(monitor) = self.performance_monitor.lock().await.as_ref() {
+            monitor.run_benchmark_suite(duration_secs).await
+        } else {
+            Err(PerformanceError::InvalidMetrics)
+        }
+    }
+
+    /// Apply performance optimization preset
+    pub async fn apply_performance_preset(&self, preset: PerformancePreset) -> Result<(), PerformanceError> {
+        if let Some(monitor) = self.performance_monitor.lock().await.as_ref() {
+            monitor.apply_preset(preset).await
+        } else {
+            Err(PerformanceError::InvalidMetrics)
+        }
+    }
+
+    /// Get performance recommendations
+    pub async fn get_performance_recommendations(&self) -> Vec<String> {
+        if let Some(monitor) = self.performance_monitor.lock().await.as_ref() {
+            monitor.get_recommendations().await
+        } else {
+            Vec::new()
+        }
+    }
+
     /// Process incoming encrypted message data
     pub async fn process_incoming_message(&self, encrypted_data: &[u8]) -> Result<(), MessagingError> {
         let decrypted = self.decrypt_message(encrypted_data).await
@@ -702,12 +771,327 @@ mod tests {
 
     #[tokio::test]
     async fn test_handshake_initiation() {
-        let _link = RgibberLink::new();
+        let mut _link = RgibberLink::new();
 
         // This would normally require audio hardware
         // For now, just test state transitions
         assert!(_link.initiate_handshake().await.is_ok());
         // State should be WaitingForQr after initiation
         // (audio sending is mocked in AudioEngine)
+// FFI bindings for Android JNI
+use std::ffi::{c_char, c_int, c_void};
+
+#[no_mangle]
+pub extern "C" fn gibberlink_create() -> *mut c_void {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_destroy(_ptr: *mut c_void) {
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_initiate_handshake(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_get_state(_ptr: *mut c_void) -> c_int {
+    0
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_receive_nonce(_ptr: *mut c_void, _nonce: *const u8, _nonce_len: usize) -> *const c_char {
+    std::ptr::null()
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_process_qr_payload(_ptr: *mut c_void, _qr_data: *const u8, _qr_len: usize) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_receive_ack(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_encrypt_message(_ptr: *mut c_void, _data: *const u8, _data_len: usize, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_decrypt_message(_ptr: *mut c_void, _encrypted_data: *const u8, _encrypted_len: usize, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_send_audio_data(_ptr: *mut c_void, _data: *const u8, _data_len: usize) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_receive_audio_data(_ptr: *mut c_void, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_is_receiving(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_generate_qr_code(_ptr: *mut c_void, _payload: *const u8, _payload_len: usize) -> *const c_char {
+    std::ptr::null()
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_decode_qr_code(_ptr: *mut c_void, _qr_data: *const u8, _qr_len: usize, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_create() -> *mut c_void {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_destroy(_ptr: *mut c_void) {
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_initialize(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_generate_parametric_audio(_ptr: *mut c_void, _data: *const u8, _data_len: usize, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_transmit_sync_pulse(_ptr: *mut c_void, _pattern: *const u8, _pattern_len: usize) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_transmit_auth_signal(_ptr: *mut c_void, _challenge: *const u8, _challenge_len: usize, _signature: *const u8, _signature_len: usize) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_detect_presence(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_transmit_control_data(_ptr: *mut c_void, _data: *const u8, _data_len: usize, _priority: u8) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_receive_beam_signals(_ptr: *mut c_void, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_get_config(_ptr: *mut c_void, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_update_config(_ptr: *mut c_void, _config_data: *const u8, _config_len: usize) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_get_channel_diagnostics(_ptr: *mut c_void, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn ultrasonic_beam_engine_shutdown(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_create(_config_data: *const u8, _config_len: usize, _rx_config_data: *const u8, _rx_config_len: usize) -> *mut c_void {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_destroy(_ptr: *mut c_void) {
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_initialize(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_shutdown(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_transmit_data(_ptr: *mut c_void, _data: *const u8, _data_len: usize) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_receive_data(_ptr: *mut c_void, _timeout_ms: u64, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_set_intensity(_ptr: *mut c_void, _intensity: f32) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_get_alignment_status(_ptr: *mut c_void, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_set_alignment_target(_ptr: *mut c_void, _x: f32, _y: f32) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_auto_align(_ptr: *mut c_void, _max_attempts: u32) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_get_channel_diagnostics(_ptr: *mut c_void, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_enable_adaptive_mode(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_disable_adaptive_mode(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_update_power_profile(_ptr: *mut c_void, _profile_data: *const u8, _profile_len: usize) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_get_current_power_profile(_ptr: *mut c_void, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_emergency_shutdown(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_get_safety_stats(_ptr: *mut c_void, _out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn laser_engine_reset_energy_monitoring(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_create() -> *mut c_void {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_destroy(_ptr: *mut c_void) {
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_initialize(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_is_active(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_measure_distance(_ptr: *mut c_void, _out_distance: *mut f32, _out_strength: *mut f32, _out_quality: *mut f32) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_measure_distance_averaged(_ptr: *mut c_void, _samples: usize, _out_distance: *mut f32, _out_strength: *mut f32, _out_quality: *mut f32) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_measure_distance_fast(_ptr: *mut c_void, _out_distance: *mut f32, _out_strength: *mut f32, _out_quality: *mut f32) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_update_environmental_conditions(_ptr: *mut c_void, _temperature: f32, _humidity: f32, _pressure: f32, _wind_speed: f32, _visibility: f32) {
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_get_environmental_conditions(_ptr: *mut c_void, _out_temperature: *mut f32, _out_humidity: *mut f32, _out_pressure: *mut f32, _out_wind_speed: *mut f32, _out_visibility: *mut f32) {
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_get_current_range_category(_ptr: *mut c_void) -> c_int {
+    -1
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_get_measurement_history_size(_ptr: *mut c_void) -> usize {
+    0
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_get_measurement_history(_ptr: *mut c_void, _index: usize, _out_distance: *mut f32, _out_strength: *mut f32, _out_quality: *mut f32, _out_timestamp: *mut u64) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn range_detector_shutdown(_ptr: *mut c_void) -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn detect_hardware_capabilities(_out_len: *mut usize) -> *mut u8 {
+    std::ptr::null_mut()
+}
+
+#[no_mangle]
+pub extern "C" fn check_ultrasonic_hardware_available() -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn check_laser_hardware_available() -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn check_photodiode_hardware_available() -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn check_camera_hardware_available() -> bool {
+    false
+}
+
+#[no_mangle]
+pub extern "C" fn gibberlink_free_data(_data: *mut u8) {
+}
     }
 }

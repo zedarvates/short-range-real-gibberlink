@@ -11,8 +11,13 @@ use std::time::SystemTime;
 use super::mission::*;
 use super::security::{WeatherCondition, TimeOfDay};
 
+#[cfg(feature = "weather-api")]
+use reqwest;
+#[cfg(feature = "weather-api")]
+use tokio;
+
 /// Weather data source types
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WeatherSource {
     LocalSensor,
     WeatherAPI,
@@ -207,6 +212,68 @@ pub struct WeatherManager {
     current_weather: Option<WeatherData>,
     weather_history: Vec<WeatherData>,
     max_history_entries: usize,
+    api_keys: HashMap<String, String>,
+    local_sensor_interface: Option<LocalSensorInterface>,
+}
+
+/// Configuration for weather data sources
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct WeatherConfig {
+    pub openweather_api_key: Option<String>,
+    pub aviation_weather_api_key: Option<String>,
+    pub local_sensor_enabled: bool,
+    pub cache_duration_seconds: u64,
+    pub fallback_sources: Vec<WeatherSource>,
+}
+
+/// Local sensor interface for onboard weather sensing
+#[derive(Debug, Clone)]
+pub struct LocalSensorInterface {
+    pub temperature_sensor: bool,
+    pub humidity_sensor: bool,
+    pub pressure_sensor: bool,
+    pub wind_sensor: bool,
+    pub visibility_sensor: bool,
+}
+
+/// OpenWeatherMap API response structure
+#[cfg(feature = "weather-api")]
+#[derive(Debug, Deserialize)]
+struct OpenWeatherResponse {
+    main: OpenWeatherMain,
+    wind: OpenWeatherWind,
+    visibility: Option<u32>,
+    weather: Vec<OpenWeatherWeather>,
+    clouds: OpenWeatherClouds,
+}
+
+#[cfg(feature = "weather-api")]
+#[derive(Debug, Deserialize)]
+struct OpenWeatherMain {
+    temp: f32,
+    humidity: f32,
+    pressure: f32,
+}
+
+#[cfg(feature = "weather-api")]
+#[derive(Debug, Deserialize)]
+struct OpenWeatherWind {
+    speed: f32,
+    deg: f32,
+    gust: Option<f32>,
+}
+
+#[cfg(feature = "weather-api")]
+#[derive(Debug, Deserialize)]
+struct OpenWeatherWeather {
+    main: String,
+    description: String,
+}
+
+#[cfg(feature = "weather-api")]
+#[derive(Debug, Deserialize)]
+struct OpenWeatherClouds {
+    all: f32,
 }
 
 impl WeatherManager {
@@ -216,6 +283,39 @@ impl WeatherManager {
             current_weather: None,
             weather_history: Vec::new(),
             max_history_entries: max_history,
+            api_keys: HashMap::new(),
+            local_sensor_interface: None,
+        }
+    }
+
+    /// Create weather manager with configuration
+    pub fn with_config(config: WeatherConfig, max_history: usize) -> Self {
+        let mut api_keys = HashMap::new();
+        if let Some(key) = config.openweather_api_key {
+            api_keys.insert("openweather".to_string(), key);
+        }
+        if let Some(key) = config.aviation_weather_api_key {
+            api_keys.insert("aviation_weather".to_string(), key);
+        }
+
+        let local_sensor_interface = if config.local_sensor_enabled {
+            Some(LocalSensorInterface {
+                temperature_sensor: true,
+                humidity_sensor: true,
+                pressure_sensor: true,
+                wind_sensor: false, // Most drones don't have wind sensors
+                visibility_sensor: false, // Limited onboard visibility sensing
+            })
+        } else {
+            None
+        };
+
+        Self {
+            current_weather: None,
+            weather_history: Vec::new(),
+            max_history_entries: max_history,
+            api_keys,
+            local_sensor_interface,
         }
     }
 
@@ -233,6 +333,174 @@ impl WeatherManager {
         }
 
         Ok(())
+    }
+
+    /// Fetch weather data from OpenWeatherMap API
+    #[cfg(feature = "weather-api")]
+    pub async fn fetch_openweather_data(&mut self, lat: f64, lon: f64) -> Result<(), WeatherError> {
+        let api_key = self.api_keys.get("openweather")
+            .ok_or(WeatherError::InvalidWeatherData("OpenWeather API key not configured".to_string()))?;
+
+        let url = format!(
+            "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}&units=metric",
+            lat, lon, api_key
+        );
+
+        let response = reqwest::get(&url).await
+            .map_err(|e| WeatherError::InvalidWeatherData(format!("API request failed: {}", e)))?;
+
+        let api_response: OpenWeatherResponse = response.json().await
+            .map_err(|e| WeatherError::InvalidWeatherData(format!("JSON parsing failed: {}", e)))?;
+
+        let weather_data = WeatherData {
+            timestamp: SystemTime::now(),
+            location: GeoCoordinate {
+                latitude: lat,
+                longitude: lon,
+                altitude_msl: 0.0, // Would need separate API call for elevation
+            },
+            temperature_celsius: api_response.main.temp,
+            humidity_percent: api_response.main.humidity as f32,
+            wind_speed_mps: api_response.wind.speed,
+            wind_direction_degrees: api_response.wind.deg,
+            gust_speed_mps: api_response.wind.gust.unwrap_or(api_response.wind.speed * 1.2),
+            visibility_meters: api_response.visibility.unwrap_or(10000),
+            precipitation_type: if api_response.weather[0].main.to_lowercase().contains("rain") {
+                Some("rain".to_string())
+            } else if api_response.weather[0].main.to_lowercase().contains("snow") {
+                Some("snow".to_string())
+            } else {
+                None
+            },
+            precipitation_rate_mmh: 0.0, // Would need forecast API for rate
+            pressure_hpa: api_response.main.pressure,
+            cloud_cover_percent: api_response.clouds.all,
+            lightning_probability: 0.0, // Not available in basic API
+            source: WeatherSource::WeatherAPI,
+            forecast_horizon_hours: None,
+        };
+
+        self.update_weather(weather_data)?;
+        Ok(())
+    }
+
+    /// Fetch weather data from local sensors
+    pub async fn fetch_local_sensor_data(&mut self, location: &GeoCoordinate) -> Result<(), WeatherError> {
+        let sensors = self.local_sensor_interface.as_ref()
+            .ok_or(WeatherError::InvalidWeatherData("Local sensors not configured".to_string()))?;
+
+        // Simulate local sensor readings (in real implementation, this would interface with hardware)
+        let mut weather_data = WeatherData {
+            timestamp: SystemTime::now(),
+            location: location.clone(),
+            temperature_celsius: 20.0, // Placeholder - would read from temperature sensor
+            humidity_percent: 65.0, // Placeholder - would read from humidity sensor
+            wind_speed_mps: 2.5, // Placeholder - would read from wind sensor if available
+            wind_direction_degrees: 180.0,
+            gust_speed_mps: 3.5,
+            visibility_meters: 8000.0, // Placeholder - would estimate from sensors
+            precipitation_type: None,
+            precipitation_rate_mmh: 0.0,
+            pressure_hpa: 1013.0, // Placeholder - would read from pressure sensor
+            cloud_cover_percent: 25.0,
+            lightning_probability: 0.01,
+            source: WeatherSource::LocalSensor,
+            forecast_horizon_hours: None,
+        };
+
+        // Apply sensor-specific adjustments
+        if sensors.temperature_sensor {
+            // In real implementation: weather_data.temperature_celsius = read_temperature_sensor();
+        }
+        if sensors.humidity_sensor {
+            // In real implementation: weather_data.humidity_percent = read_humidity_sensor();
+        }
+        if sensors.pressure_sensor {
+            // In real implementation: weather_data.pressure_hpa = read_pressure_sensor();
+        }
+        if sensors.wind_sensor {
+            // In real implementation: (weather_data.wind_speed_mps, weather_data.wind_direction_degrees) = read_wind_sensor();
+        }
+        if sensors.visibility_sensor {
+            // In real implementation: weather_data.visibility_meters = estimate_visibility();
+        }
+
+        self.update_weather(weather_data)?;
+        Ok(())
+    }
+
+    /// Fetch weather data with automatic fallback between sources
+    pub async fn fetch_weather_with_fallback(&mut self, location: &GeoCoordinate) -> Result<(), WeatherError> {
+        let mut errors = Vec::new();
+
+        // Try OpenWeather API first
+        #[cfg(feature = "weather-api")]
+        if self.api_keys.contains_key("openweather") {
+            match self.fetch_openweather_data(location.latitude, location.longitude).await {
+                Ok(_) => return Ok(()),
+                Err(e) => errors.push(format!("OpenWeather API: {}", e)),
+            }
+        }
+
+        // Try local sensors as fallback
+        if self.local_sensor_interface.is_some() {
+            match self.fetch_local_sensor_data(location).await {
+                Ok(_) => return Ok(()),
+                Err(e) => errors.push(format!("Local sensors: {}", e)),
+            }
+        }
+
+        // If all sources failed, return combined error
+        Err(WeatherError::InvalidWeatherData(format!(
+            "All weather sources failed: {}",
+            errors.join("; ")
+        )))
+    }
+
+    /// Get weather forecast for mission planning
+    #[cfg(feature = "weather-api")]
+    pub async fn fetch_weather_forecast(&self, lat: f64, lon: f64, hours_ahead: u32) -> Result<Vec<WeatherData>, WeatherError> {
+        let api_key = self.api_keys.get("openweather")
+            .ok_or(WeatherError::InvalidWeatherData("OpenWeather API key not configured".to_string()))?;
+
+        let url = format!(
+            "https://api.openweathermap.org/data/2.5/forecast?lat={}&lon={}&appid={}&units=metric&cnt={}",
+            lat, lon, api_key, hours_ahead / 3 // API returns 3-hour intervals
+        );
+
+        let response = reqwest::get(&url).await
+            .map_err(|e| WeatherError::InvalidWeatherData(format!("Forecast API request failed: {}", e)))?;
+
+        // Parse forecast response (simplified - would need full ForecastResponse struct)
+        let _forecast_data: serde_json::Value = response.json().await
+            .map_err(|e| WeatherError::InvalidWeatherData(format!("Forecast JSON parsing failed: {}", e)))?;
+
+        // Convert to WeatherData vector (simplified implementation)
+        let mut forecast = Vec::new();
+        for i in 0..(hours_ahead / 3) {
+            let forecast_time = SystemTime::now() + std::time::Duration::from_secs((i * 3 * 3600) as u64);
+            // In real implementation, extract data from forecast response
+            let weather_point = WeatherData {
+                timestamp: forecast_time,
+                location: GeoCoordinate { latitude: lat, longitude: lon, altitude_msl: 0.0 },
+                temperature_celsius: 22.0, // Placeholder
+                humidity_percent: 60.0,
+                wind_speed_mps: 3.0,
+                wind_direction_degrees: 200.0,
+                gust_speed_mps: 4.0,
+                visibility_meters: 9000.0,
+                precipitation_type: None,
+                precipitation_rate_mmh: 0.0,
+                pressure_hpa: 1012.0,
+                cloud_cover_percent: 40.0,
+                lightning_probability: 0.02,
+                source: WeatherSource::ForecastModel,
+                forecast_horizon_hours: Some((i * 3) as u32),
+            };
+            forecast.push(weather_point);
+        }
+
+        Ok(forecast)
     }
 
     /// Assess weather impact on drone operations
@@ -872,5 +1140,85 @@ mod tests {
         // Test will be more comprehensive once WeatherManager has the methods
         // For now, just test weather data validation
         assert!(manager.current_weather.is_some());
+    }
+
+    #[tokio::test]
+    async fn test_weather_manager_with_config() {
+        let config = WeatherConfig {
+            openweather_api_key: Some("test_key".to_string()),
+            aviation_weather_api_key: None,
+            local_sensor_enabled: true,
+            cache_duration_seconds: 300,
+            fallback_sources: vec![WeatherSource::LocalSensor],
+        };
+
+        let manager = WeatherManager::with_config(config, 10);
+        assert!(manager.local_sensor_interface.is_some());
+        assert!(manager.api_keys.contains_key("openweather"));
+    }
+
+    #[tokio::test]
+    async fn test_local_sensor_data_fetch() {
+        let config = WeatherConfig {
+            openweather_api_key: None,
+            aviation_weather_api_key: None,
+            local_sensor_enabled: true,
+            cache_duration_seconds: 300,
+            fallback_sources: vec![WeatherSource::LocalSensor],
+        };
+
+        let mut manager = WeatherManager::with_config(config, 10);
+        let location = GeoCoordinate {
+            latitude: 45.0,
+            longitude: 2.0,
+            altitude_msl: 100.0,
+        };
+
+        // This should work with local sensors enabled
+        let result = manager.fetch_local_sensor_data(&location).await;
+        assert!(result.is_ok());
+        assert!(manager.current_weather.is_some());
+
+        let weather = manager.current_weather.as_ref().unwrap();
+        assert_eq!(weather.source, WeatherSource::LocalSensor);
+        assert_eq!(weather.location.latitude, 45.0);
+        assert_eq!(weather.location.longitude, 2.0);
+    }
+
+    #[tokio::test]
+    async fn test_weather_fallback_without_sources() {
+        let config = WeatherConfig {
+            openweather_api_key: None,
+            aviation_weather_api_key: None,
+            local_sensor_enabled: false,
+            cache_duration_seconds: 300,
+            fallback_sources: vec![],
+        };
+
+        let mut manager = WeatherManager::with_config(config, 10);
+        let location = GeoCoordinate {
+            latitude: 45.0,
+            longitude: 2.0,
+            altitude_msl: 100.0,
+        };
+
+        // This should fail with no sources available
+        let result = manager.fetch_weather_with_fallback(&location).await;
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_weather_config_creation() {
+        let config = WeatherConfig {
+            openweather_api_key: Some("test_key".to_string()),
+            aviation_weather_api_key: Some("aviation_key".to_string()),
+            local_sensor_enabled: true,
+            cache_duration_seconds: 600,
+            fallback_sources: vec![WeatherSource::WeatherAPI, WeatherSource::LocalSensor],
+        };
+
+        assert_eq!(config.cache_duration_seconds, 600);
+        assert!(config.local_sensor_enabled);
+        assert_eq!(config.fallback_sources.len(), 2);
     }
 }

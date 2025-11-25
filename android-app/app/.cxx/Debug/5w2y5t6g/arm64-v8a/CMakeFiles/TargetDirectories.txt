@@ -1,0 +1,3 @@
+D:/_ APP/RealGibber/android-app/app/.cxx/Debug/5w2y5t6g/arm64-v8a/CMakeFiles/gibberlink-jni.dir
+D:/_ APP/RealGibber/android-app/app/.cxx/Debug/5w2y5t6g/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/_ APP/RealGibber/android-app/app/.cxx/Debug/5w2y5t6g/arm64-v8a/CMakeFiles/rebuild_cache.dir

@@ -174,14 +174,15 @@ impl UltrasonicBeamEngine {
         let num_bands = all_bands.len();
 
         let mut signal = vec![0.0f32; total_samples];
+        let mut global_sample_idx = 0;
 
         for &byte in data {
             for bit in 0..8 {
                 let bit_value = (byte >> (7 - bit)) & 1;
                 let amplitude = if bit_value == 1 { 1.0 } else { 0.0 };
 
-                for sample_idx in 0..samples_per_bit {
-                    let t = sample_idx as f32 / sample_rate;
+                for _ in 0..samples_per_bit {
+                    let t = global_sample_idx as f32 / sample_rate;
 
                     // Sum all carrier frequencies with beamforming phase
                     let mut sample_sum = 0.0;
@@ -204,13 +205,13 @@ impl UltrasonicBeamEngine {
                             self.config.power_level * 0.7 // Harmonics reduced by 30%
                         };
 
-                        sample_sum += amplitude * carrier * band_amplitude / num_bands as f32;
+                        sample_sum += amplitude * carrier * band_amplitude;
                     }
 
-                    let signal_idx = (byte as usize * 8 + bit) * samples_per_bit + sample_idx;
-                    if signal_idx < total_samples {
-                        signal[signal_idx] = sample_sum;
+                    if global_sample_idx < total_samples {
+                        signal[global_sample_idx] = sample_sum;
                     }
+                    global_sample_idx += 1;
                 }
             }
         }

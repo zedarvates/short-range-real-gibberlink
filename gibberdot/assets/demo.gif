@@ -1,0 +1,22 @@
+GIF89a
+
+Demo placeholder - GibberDot communication between two devices
+Frame 1: Two devices in idle state (LEDs off)
+Frame 2: Device A initiates (blue LED fixed)
+Frame 3: Device B listens (blue LED slow blink)
+Frame 4: Ultrasonic transmission (40kHz burst)
+Frame 5: Optical acknowledgment (LED flash)
+Frame 6: Key exchange active (LEDs blinking)
+Frame 7: Success state (green LED flashes 6x)
+Frame 8: Secure communication established
+
+[GIF animation showing the complete GibberDot handshake sequence]
+- Device A: Arduino Nano with ultrasonic transducer
+- Device B: Arduino Nano with ultrasonic transducer  
+- Communication: 40kHz ultrasonic + RGB LED signaling
+- Time: ~280ms handshake completion
+- Security: AES-128 session key established
+- Power: <15mA peak consumption
+
+RealGibberLink GibberDot Mode Demo v1.0
+"Works even when everything else is dead"

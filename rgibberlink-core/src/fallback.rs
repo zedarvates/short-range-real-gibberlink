@@ -261,6 +261,8 @@ impl FallbackManager {
                                         reason,
                                         &config,
                                         &fallback_status_arc,
+                                        &laser_engine,
+                                        &ultrasound_engine,
                                     ).await {
                                         eprintln!("Fallback trigger failed: {:?}", e);
                                     }
@@ -404,6 +406,8 @@ impl FallbackManager {
         failure_reason: ChannelFailure,
         config: &FallbackConfig,
         fallback_status: &Arc<Mutex<FallbackStatus>>,
+        laser_engine: &Option<Arc<Mutex<LaserEngine>>>,
+        ultrasound_engine: &Option<Arc<Mutex<UltrasonicBeamEngine>>>,
     ) -> Result<(), FallbackError> {
         // Preserve session state before fallback
         Self::preserve_session_state(protocol_engine, fallback_status).await?;
@@ -431,7 +435,7 @@ impl FallbackManager {
         }
 
         // Start recovery monitoring
-        Self::start_recovery_monitoring_internal(protocol_engine, config, fallback_status).await?;
+        Self::start_recovery_monitoring_internal(protocol_engine, config, fallback_status, laser_engine, ultrasound_engine).await?;
 
         Ok(())
     }
@@ -443,13 +447,16 @@ impl FallbackManager {
     ) -> Result<(), FallbackError> {
         let protocol = protocol_engine.lock().await;
 
+        // Serialize crypto state for preservation
+        let crypto_state = Self::serialize_crypto_state(&protocol).await;
+
         let snapshot = SessionSnapshot {
             session_id: *protocol.get_session_id(),
             shared_secret: protocol.get_shared_secret().copied(),
             peer_public_key: protocol.get_peer_public_key().cloned(),
             protocol_state: protocol.get_state().await,
             communication_mode: protocol.get_mode().clone(),
-            crypto_state: vec![], // TODO: Serialize crypto state if needed
+            crypto_state,
             timestamp: Instant::now(),
         };
 
@@ -457,6 +464,62 @@ impl FallbackManager {
             let mut status = fallback_status.lock().await;
             status.session_snapshot = Some(snapshot);
         }
+        Ok(())
+    }
+
+    /// Serialize crypto state for session preservation
+    async fn serialize_crypto_state(protocol: &ProtocolEngine) -> Vec<u8> {
+        use serde::Serialize;
+
+        #[derive(Serialize)]
+        struct CryptoStateSnapshot {
+            session_id: [u8; 16],
+            shared_secret: Option<[u8; 32]>,
+            peer_public_key: Option<Vec<u8>>,
+            protocol_state: crate::protocol::ProtocolState,
+            communication_mode: crate::protocol::CommunicationMode,
+        }
+
+        let snapshot = CryptoStateSnapshot {
+            session_id: *protocol.get_session_id(),
+            shared_secret: protocol.get_shared_secret().copied(),
+            peer_public_key: protocol.get_peer_public_key().cloned(),
+            protocol_state: protocol.get_state().await,
+            communication_mode: protocol.get_mode().clone(),
+        };
+
+        // Serialize to CBOR for compact binary format
+        serde_cbor::to_vec(&snapshot).unwrap_or_default()
+    }
+
+    /// Restore session state after recovery
+    async fn restore_session_state(
+        protocol_engine: &Arc<Mutex<ProtocolEngine>>,
+        snapshot: &SessionSnapshot,
+    ) -> Result<(), FallbackError> {
+        use serde::Deserialize;
+
+        #[derive(Deserialize)]
+        struct CryptoStateSnapshot {
+            session_id: [u8; 16],
+            shared_secret: Option<[u8; 32]>,
+            peer_public_key: Option<Vec<u8>>,
+            protocol_state: crate::protocol::ProtocolState,
+            communication_mode: crate::protocol::CommunicationMode,
+        }
+
+        // Deserialize crypto state
+        if let Ok(state) = serde_cbor::from_slice::<CryptoStateSnapshot>(&snapshot.crypto_state) {
+            let mut protocol = protocol_engine.lock().await;
+
+            // Restore session parameters using setter methods
+            protocol.set_session_id(state.session_id);
+            protocol.set_shared_secret(state.shared_secret);
+            protocol.set_peer_public_key(state.peer_public_key);
+            protocol.set_state(state.protocol_state).await;
+            protocol.set_communication_mode(state.communication_mode);
+        }
+
         Ok(())
     }
 
@@ -485,7 +548,7 @@ impl FallbackManager {
         let ultrasound_engine = self.ultrasound_engine.clone();
 
         let handle = tokio::spawn(async move {
-            Self::start_recovery_monitoring_internal(&protocol_engine, &config, &fallback_status).await.unwrap_or_else(|e| {
+            Self::start_recovery_monitoring_internal(&protocol_engine, &config, &fallback_status, &laser_engine, &ultrasound_engine).await.unwrap_or_else(|e| {
                 eprintln!("Recovery monitoring failed to start: {:?}", e);
             });
         });
@@ -499,6 +562,8 @@ impl FallbackManager {
         protocol_engine: &Arc<Mutex<ProtocolEngine>>,
         config: &FallbackConfig,
         fallback_status: &Arc<Mutex<FallbackStatus>>,
+        laser_engine: &Option<Arc<Mutex<LaserEngine>>>,
+        ultrasound_engine: &Option<Arc<Mutex<UltrasonicBeamEngine>>>,
     ) -> Result<(), FallbackError> {
         let mut interval = tokio::time::interval(Duration::from_millis(config.recovery_retry_interval_ms));
 
@@ -515,8 +580,8 @@ impl FallbackManager {
 
             // Attempt to assess if long-range channels are now healthy
             let health_result = Self::assess_channel_health(
-                &None, // TODO: Pass actual engines
-                &None,
+                laser_engine,
+                ultrasound_engine,
                 protocol_engine,
             ).await;
 
@@ -542,6 +607,14 @@ impl FallbackManager {
         config: &FallbackConfig,
         fallback_status: &Arc<Mutex<FallbackStatus>>,
     ) -> Result<(), FallbackError> {
+        // Restore session state from snapshot if available
+        {
+            let status = fallback_status.lock().await;
+            if let Some(snapshot) = &status.session_snapshot {
+                Self::restore_session_state(protocol_engine, snapshot).await?;
+            }
+        }
+
         // Switch back to long-range mode
         {
             let mut protocol = protocol_engine.lock().await;
@@ -587,6 +660,8 @@ impl FallbackManager {
             reason,
             &self.config,
             &self.fallback_status,
+            &self.laser_engine,
+            &self.ultrasound_engine,
         ).await
     }
 

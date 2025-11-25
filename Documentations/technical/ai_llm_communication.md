@@ -62,14 +62,134 @@ pub struct AI_Message {
     pub signature: [u8; 64],
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MultiModalMetadata {
+    pub content_types: Vec<ContentType>,
+    pub total_size_bytes: u64,
+    pub compression_info: Option<CompressionInfo>,
+    pub integrity_hashes: Vec<IntegrityHash>,
+    pub security_level: SecurityLevel,
+    pub range_optimized: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum ContentType {
+    Text,
+    Audio { sample_rate: u32, channels: u8, format: AudioFormat },
+    Video { width: u32, height: u32, frame_rate: f32, format: VideoFormat },
+    Image { width: u32, height: u32, format: ImageFormat },
+    SensorData { sensor_type: SensorType, precision: u8 },
+    BinaryData { mime_type: String },
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum PayloadFormat {
+    Raw,
+    Compressed(CompressionAlgorithm),
+    Chunked { total_chunks: u32, chunk_index: u32 },
+    Hybrid(Vec<PayloadFormat>),
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ChunkInfo {
+    pub chunk_id: u32,
+    pub total_chunks: u32,
+    pub chunk_size: u32,
+    pub total_size: u64,
+    pub chunk_hash: [u8; 32],
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct CompressionInfo {
+    pub algorithm: CompressionAlgorithm,
+    pub original_size: u64,
+    pub compressed_size: u64,
+    pub compression_ratio: f32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum CompressionAlgorithm {
+    None,
+    Brotli,
+    Zstd,
+    Lz4,
+    Adaptive,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct IntegrityHash {
+    pub algorithm: HashAlgorithm,
+    pub hash: Vec<u8>,
+    pub offset: u64,
+    pub length: u64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum HashAlgorithm {
+    Sha256,
+    Blake3,
+    Crc32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum SecurityLevel {
+    Standard,
+    High,
+    Critical,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum AudioFormat {
+    Pcm,
+    Opus,
+    Aac,
+    Flac,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum VideoFormat {
+    H264,
+    H265,
+    Vp8,
+    Vp9,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum ImageFormat {
+    Jpeg,
+    Png,
+    Webp,
+    Tiff,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum SensorType {
+    Lidar,
+    Radar,
+    Thermal,
+    Imu,
+    Gps,
+    Environmental,
+}
+
 pub enum AI_MessageType {
     Prompt,
     Response,
     ContextUpdate,
     CoordinationSignal,
     ErrorReport,
+    // Multi-modal message types
+    AudioData,
+    VideoData,
+    ImageData,
+    SensorData,
+    MixedMedia,
+    StreamChunk,
+    StreamEnd,
+    QualityRequest,
+    QualityResponse,
+    CompressionNegotiation,
 }
-```
 
 ### Python Integration Example
 
@@ -158,6 +278,13 @@ max_message_size = "64KB"
 encryption_algorithm = "AES-GCM-256"
 key_rotation_interval = "1h"
 audit_retention_days = 90
+
+[multimodal]
+max_chunk_size = "32KB"
+default_compression = "adaptive"
+integrity_verification = true
+range_optimization = true
+security_level = "high"
 ```
 
 ## Limitations & Considerations

@@ -1,0 +1,29 @@
+[package]
+name = "gibberdot-ch32v003"
+version = "1.0.0"
+edition = "2021"
+authors = ["RealGibberLink Team"]
+description = "Ultra-low power GibberDot firmware for CH32V003"
+license = "GPL-3.0"
+
+[dependencies]
+riscv-rt = "0.12"
+critical-section = { version = "1.1", features = ["std"] }
+panic-halt = "0.2"
+embedded-hal = "0.2"
+nb = "1.1"
+cortex-m = "0.7"
+ch32v0-hal = { git = "https://github.com/ch32-rs/ch32v0-hal" }
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 2
+debug = true
+overflow-checks = true

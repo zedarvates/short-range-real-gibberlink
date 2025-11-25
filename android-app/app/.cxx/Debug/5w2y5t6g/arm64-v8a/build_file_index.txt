@@ -1,0 +1,1 @@
+D:\_ APP\RealGibber\android-app\app\src\main\cpp\CMakeLists.txt

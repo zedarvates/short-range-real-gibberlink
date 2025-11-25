@@ -63,6 +63,21 @@ class RgibberLinkJNI {
         external fun getSafetyStats(ptr: Long): ByteArray?
         external fun resetEnergyMonitoring(ptr: Long): Boolean
 
+        // RangeDetector operations
+        external fun createRangeDetector(): Long
+        external fun destroyRangeDetector(ptr: Long)
+        external fun initializeRangeDetector(ptr: Long): Boolean
+        external fun isRangeDetectorActive(ptr: Long): Boolean
+        external fun measureDistance(ptr: Long, outDistance: FloatArray, outStrength: FloatArray, outQuality: FloatArray): Boolean
+        external fun measureDistanceAveraged(ptr: Long, samples: Int, outDistance: FloatArray, outStrength: FloatArray, outQuality: FloatArray): Boolean
+        external fun measureDistanceFast(ptr: Long, outDistance: FloatArray, outStrength: FloatArray, outQuality: FloatArray): Boolean
+        external fun updateRangeDetectorEnvironmentalConditions(ptr: Long, temperature: Float, humidity: Float, pressure: Float, windSpeed: Float, visibility: Float)
+        external fun getRangeDetectorEnvironmentalConditions(ptr: Long, outTemperature: FloatArray, outHumidity: FloatArray, outPressure: FloatArray, outWindSpeed: FloatArray, outVisibility: FloatArray)
+        external fun getCurrentRangeCategory(ptr: Long): Int
+        external fun getMeasurementHistorySize(ptr: Long): Int
+        external fun getMeasurementHistory(ptr: Long, index: Int, outDistance: FloatArray, outStrength: FloatArray, outQuality: FloatArray, outTimestamp: LongArray): Boolean
+        external fun shutdownRangeDetector(ptr: Long): Boolean
+
         // Hardware capability detection
         external fun detectHardwareCapabilities(): ByteArray?
         external fun checkUltrasonicHardwareAvailable(): Boolean

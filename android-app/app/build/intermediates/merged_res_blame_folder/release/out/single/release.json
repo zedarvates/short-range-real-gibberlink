@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.Rgibberlink.app-merged_res-54:/layout_activity_permission_authorization.xml.flat",
+        "source": "com.Rgibberlink.app-main-55:/layout/activity_permission_authorization.xml"
+    },
+    {
+        "merged": "com.Rgibberlink.app-merged_res-54:/xml_data_extraction_rules.xml.flat",
+        "source": "com.Rgibberlink.app-main-55:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.Rgibberlink.app-merged_res-54:/layout_activity_main.xml.flat",
+        "source": "com.Rgibberlink.app-main-55:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.Rgibberlink.app-merged_res-54:/xml_backup_rules.xml.flat",
+        "source": "com.Rgibberlink.app-main-55:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.Rgibberlink.app-merged_res-54:/layout_activity_face_validation.xml.flat",
+        "source": "com.Rgibberlink.app-main-55:/layout/activity_face_validation.xml"
+    }
+]

@@ -1,0 +1,11 @@
+{
+  "ndk": "d:\\_ APP\\RealGibber\\android-ndk\\android-ndk-r27c",
+  "revision": {
+    "mMajor": 27,
+    "mMinor": 2,
+    "mMicro": 12479018,
+    "mPreview": 0,
+    "mPrecision": "MICRO",
+    "mPreviewSeparator": " "
+  }
+}

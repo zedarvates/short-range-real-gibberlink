@@ -329,12 +329,13 @@ class MainActivity : AppCompatActivity() {
     private fun showSetupDialog() {
         // Create a setup dialog to change PIN or biometric settings
         val builder = android.app.AlertDialog.Builder(this)
-        builder.setTitle("App Security Settings")
-        builder.setItems(arrayOf("Change PIN", "Biometric Settings", "Face Validation")) { _, which ->
+        builder.setTitle("GibberLink Options")
+        builder.setItems(arrayOf("Change PIN", "Biometric Settings", "Face Validation", "Range Detection")) { _, which ->
             when (which) {
                 0 -> showPinChangeDialog()
                 1 -> showBiometricSettingsDialog()
                 2 -> showFaceValidationSettingsDialog()
+                3 -> startRangeDetection()
             }
         }
         builder.show()
@@ -418,6 +419,11 @@ class MainActivity : AppCompatActivity() {
         faceValidationLauncher.launch(intent)
     }
 
+    private fun startRangeDetection() {
+        val intent = Intent(this, RangeDetectionActivity::class.java)
+        rangeDetectionLauncher.launch(intent)
+    }
+
     // Activity result handler for face validation
     private val faceValidationLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -426,6 +432,15 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Face validation successful!", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "Face validation failed or was cancelled", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // Activity result handler for range detection
+    private val rangeDetectionLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            Toast.makeText(this, "Range detection completed", Toast.LENGTH_SHORT).show()
         }
     }
 

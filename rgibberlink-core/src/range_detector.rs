@@ -578,18 +578,25 @@ impl RangeDetector {
     async fn calculate_speed_of_sound(&self) -> f32 {
         let env = self.environmental_conditions.lock().await;
 
-        // Speed of sound formula: v = 331.3 + 0.606 * T
-        // Where T is temperature in Celsius
-        // Additional corrections for humidity and pressure
+        // Enhanced speed of sound calculation
+        // Base formula: v = 331.3 + 0.606 * T (m/s at T°C)
         let base_speed = 331.3 + 0.606 * env.temperature_celsius;
 
-        // Humidity correction (simplified)
-        let humidity_correction = 0.00035 * env.humidity_percent;
+        // Humidity correction using more accurate formula
+        // The speed increases with humidity due to molecular weight effects
+        let humidity_factor = 1.0 + 0.000012 * env.humidity_percent * env.humidity_percent.sqrt();
+        let humidity_corrected = base_speed * humidity_factor;
 
-        // Pressure correction (simplified)
-        let pressure_correction = 0.00015 * (env.pressure_hpa - 1013.25);
+        // Pressure correction (ideal gas law)
+        // v ∝ √(γP/ρ) where γ is adiabatic index, P is pressure, ρ is density
+        let pressure_factor = (env.pressure_hpa / 1013.25).sqrt();
+        let pressure_corrected = humidity_corrected * pressure_factor;
 
-        base_speed + humidity_correction + pressure_correction
+        // Wind correction (headwind increases effective speed)
+        // This is a simplified model - in reality wind affects the medium differently
+        let wind_correction = 0.001 * env.wind_speed_mps * env.wind_speed_mps.signum(); // Small correction
+
+        pressure_corrected + wind_correction
     }
 
     /// Calculate measurement quality score

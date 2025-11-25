@@ -5,7 +5,7 @@
 
 use crate::visual::{VisualEngine, VisualError, VisualPayload};
 use crate::optical_ecc::{OpticalECC, OpticalQualityMetrics, AdaptiveECCConfig};
-use crate::range_detector::{RangeDetector, RangeDetectorCategory, RangeEnvironmentalConditions};
+use crate::range_detector::{RangeDetector, RangeDetectorCategory, RangeEnvironmentalConditions, RangeMeasurement};
 use crate::security::WeatherCondition;
 use reed_solomon_erasure::galois_8::ReedSolomon;
 use serde::{Deserialize, Serialize};
@@ -429,7 +429,8 @@ impl LaserEngine {
 
         // Update power profile, modulation scheme, and ECC if in adaptive mode
         if self.adaptive_mode {
-            self.update_power_profile().await?;
+            // Measure range and update power profile dynamically
+            self.measure_range_and_update_power().await?;
             self.update_modulation_scheme().await?;
             self.update_ecc_for_range().await?;
         }
@@ -1529,6 +1530,97 @@ impl LaserEngine {
     pub fn enable_adaptive_mode(&mut self, range_detector: Arc<Mutex<RangeDetector>>) {
         self.range_detector = Some(range_detector);
         self.adaptive_mode = true;
+    }
+
+    /// Perform range measurement and update power profile
+    pub async fn measure_range_and_update_power(&self) -> Result<(), LaserError> {
+        if !self.adaptive_mode || self.range_detector.is_none() {
+            return Err(LaserError::HardwareUnavailable);
+        }
+
+        let range_detector = self.range_detector.as_ref().unwrap();
+        let measurement = range_detector.lock().await.measure_distance_averaged().await
+            .map_err(|_| LaserError::TransmissionFailed)?;
+
+        // Update power profile based on measured range
+        let category = RangeDetectorCategory::from_distance(measurement.distance_m);
+        let new_profile = PowerProfile::for_range_category(&category);
+
+        // Apply environmental compensation if available
+        if let Some((weather, visibility, _)) = self.get_environmental_impact().await {
+            let mut adjusted_profile = new_profile;
+            let weather_multiplier = match weather {
+                WeatherCondition::Clear => 1.0,
+                WeatherCondition::Rain => 1.5,
+                WeatherCondition::Fog => 3.0,
+                WeatherCondition::Storm => 2.0,
+                WeatherCondition::Snow => 2.5,
+                WeatherCondition::HeavyRain => 2.0,
+                WeatherCondition::LightRain => 1.3,
+                WeatherCondition::Cloudy => 1.1,
+            };
+
+            let visibility_multiplier = if visibility < 100.0 {
+                3.0
+            } else if visibility < 500.0 {
+                2.0
+            } else if visibility < 1000.0 {
+                1.5
+            } else {
+                1.0
+            };
+
+            let environmental_factor = weather_multiplier * visibility_multiplier;
+            adjusted_profile.optimal_power_mw *= environmental_factor;
+            adjusted_profile.optimal_power_mw = adjusted_profile.optimal_power_mw.min(adjusted_profile.max_power_mw);
+
+            *self.current_power_profile.lock().await = adjusted_profile;
+        } else {
+            *self.current_power_profile.lock().await = new_profile;
+        }
+
+        Ok(())
+    }
+
+    /// Get current range measurement from detector
+    pub async fn get_current_range_measurement(&self) -> Option<RangeMeasurement> {
+        if let Some(range_detector) = &self.range_detector {
+            range_detector.lock().await.get_measurement_history().await.last().cloned()
+        } else {
+            None
+        }
+    }
+
+    /// Update range detector with current environmental conditions
+    pub async fn update_range_detector_environment(&self, weather: WeatherCondition, visibility_m: f32) -> Result<(), LaserError> {
+        if self.range_detector.is_none() {
+            return Err(LaserError::HardwareUnavailable);
+        }
+
+        // Convert weather to environmental parameters
+        let (temperature, humidity, pressure, wind_speed) = match weather {
+            WeatherCondition::Clear => (20.0, 50.0, 1013.25, 2.0),
+            WeatherCondition::Rain => (15.0, 85.0, 1008.0, 5.0),
+            WeatherCondition::Fog => (10.0, 98.0, 1010.0, 1.0),
+            WeatherCondition::Storm => (12.0, 95.0, 1005.0, 8.0),
+            WeatherCondition::Snow => (0.0, 90.0, 1012.0, 3.0),
+            WeatherCondition::HeavyRain => (14.0, 95.0, 1006.0, 7.0),
+            WeatherCondition::LightRain => (16.0, 80.0, 1009.0, 4.0),
+            WeatherCondition::Cloudy => (18.0, 60.0, 1012.0, 2.5),
+        };
+
+        let conditions = RangeEnvironmentalConditions {
+            temperature_celsius: temperature,
+            humidity_percent: humidity,
+            pressure_hpa: pressure,
+            wind_speed_mps: wind_speed,
+            visibility_meters: visibility_m,
+        };
+
+        self.range_detector.as_ref().unwrap().lock().await
+            .update_environmental_conditions(conditions).await;
+
+        Ok(())
     }
 
     /// Disable adaptive power mode

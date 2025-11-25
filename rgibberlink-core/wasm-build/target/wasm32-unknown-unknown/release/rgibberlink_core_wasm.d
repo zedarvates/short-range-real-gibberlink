@@ -1,0 +1,1 @@
+d:\_\ APP\RealGibber\rgibberlink-core\wasm-build\target\wasm32-unknown-unknown\release\rgibberlink_core_wasm.wasm: d:\_\ APP\RealGibber\rgibberlink-core\wasm-build\src\crypto.rs d:\_\ APP\RealGibber\rgibberlink-core\wasm-build\src\lib.rs d:\_\ APP\RealGibber\rgibberlink-core\wasm-build\src\visual.rs d:\_\ APP\RealGibber\rgibberlink-core\wasm-build\src\wasm.rs

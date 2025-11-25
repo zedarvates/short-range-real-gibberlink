@@ -61,6 +61,21 @@ extern "C" {
     uint8_t* laser_engine_get_safety_stats(void* ptr, size_t* out_len);
     bool laser_engine_reset_energy_monitoring(void* ptr);
 
+    // RangeDetector functions
+    void* range_detector_create();
+    void range_detector_destroy(void* ptr);
+    bool range_detector_initialize(void* ptr);
+    bool range_detector_is_active(void* ptr);
+    bool range_detector_measure_distance(void* ptr, float* out_distance, float* out_strength, float* out_quality);
+    bool range_detector_measure_distance_averaged(void* ptr, int samples, float* out_distance, float* out_strength, float* out_quality);
+    bool range_detector_measure_distance_fast(void* ptr, float* out_distance, float* out_strength, float* out_quality);
+    void range_detector_update_environmental_conditions(void* ptr, float temperature, float humidity, float pressure, float wind_speed, float visibility);
+    void range_detector_get_environmental_conditions(void* ptr, float* out_temperature, float* out_humidity, float* out_pressure, float* out_wind_speed, float* out_visibility);
+    int range_detector_get_current_range_category(void* ptr);
+    int range_detector_get_measurement_history_size(void* ptr);
+    bool range_detector_get_measurement_history(void* ptr, int index, float* out_distance, float* out_strength, float* out_quality, long* out_timestamp);
+    bool range_detector_shutdown(void* ptr);
+
     // Hardware capability detection
     uint8_t* detect_hardware_capabilities(size_t* out_len);
     bool check_ultrasonic_hardware_available();
@@ -101,6 +116,7 @@ public:
 static std::mutex g_protocol_mutex;
 static std::mutex g_ultrasonic_mutex;
 static std::mutex g_laser_mutex;
+static std::mutex g_range_detector_mutex;
 static std::mutex g_hardware_mutex;
 
 // Hardware event callback
@@ -889,6 +905,236 @@ Java_com_Rgibberlink_RgibberLinkJNI_resetEnergyMonitoring(JNIEnv* env, jobject /
     }
 }
 
+// RangeDetector JNI implementations
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_createRangeDetector(JNIEnv* env, jobject /* this */) {
+    JNIGuard guard(g_range_detector_mutex);
+    try {
+        void* ptr = range_detector_create();
+        LOGI("Created RangeDetector instance: %p", ptr);
+        return reinterpret_cast<jlong>(ptr);
+    } catch (const std::exception& e) {
+        LOGE("Failed to create RangeDetector: %s", e.what());
+        return 0;
+    }
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_destroyRangeDetector(JNIEnv* env, jobject /* this */, jlong ptr) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (ptr) {
+        range_detector_destroy(reinterpret_cast<void*>(ptr));
+        LOGI("Destroyed RangeDetector instance: %p", reinterpret_cast<void*>(ptr));
+    }
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_initializeRangeDetector(JNIEnv* env, jobject /* this */, jlong ptr) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr) return JNI_FALSE;
+
+    try {
+        return range_detector_initialize(reinterpret_cast<void*>(ptr)) ? JNI_TRUE : JNI_FALSE;
+    } catch (const std::exception& e) {
+        LOGE("RangeDetector initialization failed: %s", e.what());
+        return JNI_FALSE;
+    }
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_isRangeDetectorActive(JNIEnv* env, jobject /* this */, jlong ptr) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr) return JNI_FALSE;
+
+    try {
+        return range_detector_is_active(reinterpret_cast<void*>(ptr)) ? JNI_TRUE : JNI_FALSE;
+    } catch (const std::exception& e) {
+        LOGE("Check RangeDetector active failed: %s", e.what());
+        return JNI_FALSE;
+    }
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_measureDistance(JNIEnv* env, jobject /* this */, jlong ptr, jfloatArray outDistance, jfloatArray outStrength, jfloatArray outQuality) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr || !outDistance || !outStrength || !outQuality) return JNI_FALSE;
+
+    try {
+        float distance, strength, quality;
+        bool result = range_detector_measure_distance(
+            reinterpret_cast<void*>(ptr),
+            &distance, &strength, &quality
+        );
+
+        if (result) {
+            env->SetFloatArrayRegion(outDistance, 0, 1, &distance);
+            env->SetFloatArrayRegion(outStrength, 0, 1, &strength);
+            env->SetFloatArrayRegion(outQuality, 0, 1, &quality);
+        }
+
+        return result ? JNI_TRUE : JNI_FALSE;
+    } catch (const std::exception& e) {
+        LOGE("Measure distance failed: %s", e.what());
+        return JNI_FALSE;
+    }
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_measureDistanceAveraged(JNIEnv* env, jobject /* this */, jlong ptr, jint samples, jfloatArray outDistance, jfloatArray outStrength, jfloatArray outQuality) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr || !outDistance || !outStrength || !outQuality) return JNI_FALSE;
+
+    try {
+        float distance, strength, quality;
+        bool result = range_detector_measure_distance_averaged(
+            reinterpret_cast<void*>(ptr),
+            samples,
+            &distance, &strength, &quality
+        );
+
+        if (result) {
+            env->SetFloatArrayRegion(outDistance, 0, 1, &distance);
+            env->SetFloatArrayRegion(outStrength, 0, 1, &strength);
+            env->SetFloatArrayRegion(outQuality, 0, 1, &quality);
+        }
+
+        return result ? JNI_TRUE : JNI_FALSE;
+    } catch (const std::exception& e) {
+        LOGE("Measure distance averaged failed: %s", e.what());
+        return JNI_FALSE;
+    }
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_measureDistanceFast(JNIEnv* env, jobject /* this */, jlong ptr, jfloatArray outDistance, jfloatArray outStrength, jfloatArray outQuality) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr || !outDistance || !outStrength || !outQuality) return JNI_FALSE;
+
+    try {
+        float distance, strength, quality;
+        bool result = range_detector_measure_distance_fast(
+            reinterpret_cast<void*>(ptr),
+            &distance, &strength, &quality
+        );
+
+        if (result) {
+            env->SetFloatArrayRegion(outDistance, 0, 1, &distance);
+            env->SetFloatArrayRegion(outStrength, 0, 1, &strength);
+            env->SetFloatArrayRegion(outQuality, 0, 1, &quality);
+        }
+
+        return result ? JNI_TRUE : JNI_FALSE;
+    } catch (const std::exception& e) {
+        LOGE("Measure distance fast failed: %s", e.what());
+        return JNI_FALSE;
+    }
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_updateRangeDetectorEnvironmentalConditions(JNIEnv* env, jobject /* this */, jlong ptr, jfloat temperature, jfloat humidity, jfloat pressure, jfloat windSpeed, jfloat visibility) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr) return;
+
+    try {
+        range_detector_update_environmental_conditions(
+            reinterpret_cast<void*>(ptr),
+            temperature, humidity, pressure, windSpeed, visibility
+        );
+    } catch (const std::exception& e) {
+        LOGE("Update environmental conditions failed: %s", e.what());
+    }
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_getRangeDetectorEnvironmentalConditions(JNIEnv* env, jobject /* this */, jlong ptr, jfloatArray outTemperature, jfloatArray outHumidity, jfloatArray outPressure, jfloatArray outWindSpeed, jfloatArray outVisibility) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr || !outTemperature || !outHumidity || !outPressure || !outWindSpeed || !outVisibility) return;
+
+    try {
+        float temperature, humidity, pressure, wind_speed, visibility;
+        range_detector_get_environmental_conditions(
+            reinterpret_cast<void*>(ptr),
+            &temperature, &humidity, &pressure, &wind_speed, &visibility
+        );
+
+        env->SetFloatArrayRegion(outTemperature, 0, 1, &temperature);
+        env->SetFloatArrayRegion(outHumidity, 0, 1, &humidity);
+        env->SetFloatArrayRegion(outPressure, 0, 1, &pressure);
+        env->SetFloatArrayRegion(outWindSpeed, 0, 1, &wind_speed);
+        env->SetFloatArrayRegion(outVisibility, 0, 1, &visibility);
+    } catch (const std::exception& e) {
+        LOGE("Get environmental conditions failed: %s", e.what());
+    }
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_getCurrentRangeCategory(JNIEnv* env, jobject /* this */, jlong ptr) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr) return -1;
+
+    try {
+        return range_detector_get_current_range_category(reinterpret_cast<void*>(ptr));
+    } catch (const std::exception& e) {
+        LOGE("Get current range category failed: %s", e.what());
+        return -1;
+    }
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_getMeasurementHistorySize(JNIEnv* env, jobject /* this */, jlong ptr) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr) return 0;
+
+    try {
+        return range_detector_get_measurement_history_size(reinterpret_cast<void*>(ptr));
+    } catch (const std::exception& e) {
+        LOGE("Get measurement history size failed: %s", e.what());
+        return 0;
+    }
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_getMeasurementHistory(JNIEnv* env, jobject /* this */, jlong ptr, jint index, jfloatArray outDistance, jfloatArray outStrength, jfloatArray outQuality, jlongArray outTimestamp) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr || !outDistance || !outStrength || !outQuality || !outTimestamp) return JNI_FALSE;
+
+    try {
+        float distance, strength, quality;
+        long timestamp;
+        bool result = range_detector_get_measurement_history(
+            reinterpret_cast<void*>(ptr),
+            index,
+            &distance, &strength, &quality, &timestamp
+        );
+
+        if (result) {
+            env->SetFloatArrayRegion(outDistance, 0, 1, &distance);
+            env->SetFloatArrayRegion(outStrength, 0, 1, &strength);
+            env->SetFloatArrayRegion(outQuality, 0, 1, &quality);
+            env->SetLongArrayRegion(outTimestamp, 0, 1, &timestamp);
+        }
+
+        return result ? JNI_TRUE : JNI_FALSE;
+    } catch (const std::exception& e) {
+        LOGE("Get measurement history failed: %s", e.what());
+        return JNI_FALSE;
+    }
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_Rgibberlink_RgibberLinkJNI_shutdownRangeDetector(JNIEnv* env, jobject /* this */, jlong ptr) {
+    JNIGuard guard(g_range_detector_mutex);
+    if (!ptr) return JNI_FALSE;
+
+    try {
+        return range_detector_shutdown(reinterpret_cast<void*>(ptr)) ? JNI_TRUE : JNI_FALSE;
+    } catch (const std::exception& e) {
+        LOGE("Shutdown RangeDetector failed: %s", e.what());
+        return JNI_FALSE;
+    }
+}
+
 // Hardware capability detection
 
 extern "C" JNIEXPORT jbyteArray JNICALL
@@ -1000,4 +1246,78 @@ JNIEXPORT void JNI_OnUnload(JavaVM* vm, void* /* reserved */) {
     }
 
     LOGI("GibberLink JNI library unloaded");
+}
+
+// Stub implementations for Rust FFI functions (until Rust library is fully implemented)
+extern "C" {
+    void* gibberlink_create() { return nullptr; }
+    void gibberlink_destroy(void* ptr) {}
+    bool gibberlink_initiate_handshake(void* ptr) { return false; }
+    int gibberlink_get_state(void* ptr) { return 0; }
+    const char* gibberlink_receive_nonce(void* ptr, const uint8_t* nonce, size_t nonce_len) { return nullptr; }
+    bool gibberlink_process_qr_payload(void* ptr, const uint8_t* qr_data, size_t qr_len) { return false; }
+    bool gibberlink_receive_ack(void* ptr) { return false; }
+    uint8_t* gibberlink_encrypt_message(void* ptr, const uint8_t* data, size_t data_len, size_t* out_len) { *out_len = 0; return nullptr; }
+    uint8_t* gibberlink_decrypt_message(void* ptr, const uint8_t* encrypted_data, size_t encrypted_len, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool gibberlink_send_audio_data(void* ptr, const uint8_t* data, size_t data_len) { return false; }
+    uint8_t* gibberlink_receive_audio_data(void* ptr, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool gibberlink_is_receiving(void* ptr) { return false; }
+    const char* gibberlink_generate_qr_code(void* ptr, const uint8_t* payload, size_t payload_len) { return nullptr; }
+    uint8_t* gibberlink_decode_qr_code(void* ptr, const uint8_t* qr_data, size_t qr_len, size_t* out_len) { *out_len = 0; return nullptr; }
+
+    void* ultrasonic_beam_engine_create() { return nullptr; }
+    void ultrasonic_beam_engine_destroy(void* ptr) {}
+    bool ultrasonic_beam_engine_initialize(void* ptr) { return false; }
+    uint8_t* ultrasonic_beam_engine_generate_parametric_audio(void* ptr, const uint8_t* data, size_t data_len, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool ultrasonic_beam_engine_transmit_sync_pulse(void* ptr, const uint8_t* pattern, size_t pattern_len) { return false; }
+    bool ultrasonic_beam_engine_transmit_auth_signal(void* ptr, const uint8_t* challenge, size_t challenge_len, const uint8_t* signature, size_t signature_len) { return false; }
+    bool ultrasonic_beam_engine_detect_presence(void* ptr) { return false; }
+    bool ultrasonic_beam_engine_transmit_control_data(void* ptr, const uint8_t* data, size_t data_len, uint8_t priority) { return false; }
+    uint8_t* ultrasonic_beam_engine_receive_beam_signals(void* ptr, size_t* out_len) { *out_len = 0; return nullptr; }
+    uint8_t* ultrasonic_beam_engine_get_config(void* ptr, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool ultrasonic_beam_engine_update_config(void* ptr, const uint8_t* config_data, size_t config_len) { return false; }
+    uint8_t* ultrasonic_beam_engine_get_channel_diagnostics(void* ptr, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool ultrasonic_beam_engine_shutdown(void* ptr) { return false; }
+
+    void* laser_engine_create(const uint8_t* config_data, size_t config_len, const uint8_t* rx_config_data, size_t rx_config_len) { return nullptr; }
+    void laser_engine_destroy(void* ptr) {}
+    bool laser_engine_initialize(void* ptr) { return false; }
+    bool laser_engine_shutdown(void* ptr) { return false; }
+    bool laser_engine_transmit_data(void* ptr, const uint8_t* data, size_t data_len) { return false; }
+    uint8_t* laser_engine_receive_data(void* ptr, uint64_t timeout_ms, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool laser_engine_set_intensity(void* ptr, float intensity) { return false; }
+    uint8_t* laser_engine_get_alignment_status(void* ptr, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool laser_engine_set_alignment_target(void* ptr, float x, float y) { return false; }
+    bool laser_engine_auto_align(void* ptr, uint32_t max_attempts) { return false; }
+    uint8_t* laser_engine_get_channel_diagnostics(void* ptr, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool laser_engine_enable_adaptive_mode(void* ptr) { return false; }
+    bool laser_engine_disable_adaptive_mode(void* ptr) { return false; }
+    bool laser_engine_update_power_profile(void* ptr, const uint8_t* profile_data, size_t profile_len) { return false; }
+    uint8_t* laser_engine_get_current_power_profile(void* ptr, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool laser_engine_emergency_shutdown(void* ptr) { return false; }
+    uint8_t* laser_engine_get_safety_stats(void* ptr, size_t* out_len) { *out_len = 0; return nullptr; }
+    bool laser_engine_reset_energy_monitoring(void* ptr) { return false; }
+
+    // RangeDetector stub implementations
+    void* range_detector_create() { return nullptr; }
+    void range_detector_destroy(void* ptr) {}
+    bool range_detector_initialize(void* ptr) { return false; }
+    bool range_detector_is_active(void* ptr) { return false; }
+    bool range_detector_measure_distance(void* ptr, float* out_distance, float* out_strength, float* out_quality) { return false; }
+    bool range_detector_measure_distance_averaged(void* ptr, int samples, float* out_distance, float* out_strength, float* out_quality) { return false; }
+    bool range_detector_measure_distance_fast(void* ptr, float* out_distance, float* out_strength, float* out_quality) { return false; }
+    void range_detector_update_environmental_conditions(void* ptr, float temperature, float humidity, float pressure, float wind_speed, float visibility) {}
+    void range_detector_get_environmental_conditions(void* ptr, float* out_temperature, float* out_humidity, float* out_pressure, float* out_wind_speed, float* out_visibility) {}
+    int range_detector_get_current_range_category(void* ptr) { return -1; }
+    int range_detector_get_measurement_history_size(void* ptr) { return 0; }
+    bool range_detector_get_measurement_history(void* ptr, int index, float* out_distance, float* out_strength, float* out_quality, long* out_timestamp) { return false; }
+    bool range_detector_shutdown(void* ptr) { return false; }
+
+    uint8_t* detect_hardware_capabilities(size_t* out_len) { *out_len = 0; return nullptr; }
+    bool check_ultrasonic_hardware_available() { return false; }
+    bool check_laser_hardware_available() { return false; }
+    bool check_photodiode_hardware_available() { return false; }
+    bool check_camera_hardware_available() { return false; }
+
+    void gibberlink_free_data(uint8_t* data) {}
 }

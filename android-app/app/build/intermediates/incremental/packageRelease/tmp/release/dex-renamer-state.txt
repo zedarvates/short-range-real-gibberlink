@@ -1,0 +1,7 @@
+#Tue Nov 25 07:49:07 CET 2025
+base.1=D\:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
+path.1=classes2.dex
+base.0=D\:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

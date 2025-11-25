@@ -1,0 +1,6 @@
+# ninja log v5
+0	8	0	clean	b914ad4ce305721d
+1	15655	7857182908069354	CMakeFiles/gibberlink-jni.dir/gibberlink-jni.cpp.o	5195e310d90f3bf
+2	213	7857665087593886	build.ninja	ea0487fa2ee619a8
+3	8063	7857665178604274	CMakeFiles/gibberlink-jni.dir/gibberlink-jni.cpp.o	5195e310d90f3bf
+8064	8662	7857665184385863	D:/_ APP/RealGibber/android-app/app/build/intermediates/cxx/Debug/5w2y5t6g/obj/arm64-v8a/libgibberlink-jni.so	5ca4f78b691dd52a

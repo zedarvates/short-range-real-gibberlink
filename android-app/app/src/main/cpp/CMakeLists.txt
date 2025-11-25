@@ -2,13 +2,13 @@ cmake_minimum_required(VERSION 3.22.1)
 
 project("gibberlink-jni")
 
-# Import Rust library
-set(RUST_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../gibberlink-core/target/aarch64-linux-android/release")
-set(RUST_LIB_NAME "gibberlink_core")
+# Import Rust library (disabled for now - library not fully implemented)
+# set(RUST_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../rgibberlink-core/target/aarch64-linux-android/release")
+# set(RUST_LIB_NAME "gibberlink_core")
 
-add_library(${RUST_LIB_NAME} STATIC IMPORTED)
-set_target_properties(${RUST_LIB_NAME} PROPERTIES IMPORTED_LOCATION
-    ${RUST_LIB_DIR}/libgibberlink_core.a)
+# add_library(${RUST_LIB_NAME} STATIC IMPORTED)
+# set_target_properties(${RUST_LIB_NAME} PROPERTIES IMPORTED_LOCATION
+#     ${RUST_LIB_DIR}/libgibberlink_core.a)
 
 # Find required packages for long-range hardware support
 find_package(OpenCV QUIET)  # For camera processing
@@ -20,8 +20,8 @@ add_library(gibberlink-jni SHARED
 
 target_include_directories(gibberlink-jni PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../../../gibberlink-core
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../../../gibberlink-core/src)  # For Rust FFI headers
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../rgibberlink-core
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../rgibberlink-core/src)  # For Rust FFI headers
 
 # Add OpenCV includes if available
 if(OpenCV_FOUND)
@@ -36,7 +36,10 @@ if(OpenMP_CXX_FOUND)
 endif()
 
 target_link_libraries(gibberlink-jni
-    ${RUST_LIB_NAME}
+    # ${RUST_LIB_NAME}  # Disabled - Rust library not ready
+    c++_static  # C++ standard library
+    c++abi      # C++ ABI for exceptions and RTTI
+    unwind      # For exception handling
     android
     log
     camera2ndk  # For camera hardware access

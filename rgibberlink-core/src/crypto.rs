@@ -5,7 +5,11 @@ use ed25519_dalek::{SigningKey, VerifyingKey, Signer, Verifier, Signature};
 use std::time::{Instant, Duration};
 use zeroize::{Zeroize, ZeroizeOnDrop};
 use hkdf::Hkdf;
-use sha2::Sha256;
+use sha2::{Sha256, Digest};
+use hmac::Mac;
+
+#[cfg(feature = "post-quantum")]
+use crate::post_quantum::{PostQuantumEngine, KyberKEM, DilithiumSign, KyberKeypair, DilithiumKeypair, KyberCiphertextData};
 
 #[derive(Debug, thiserror::Error)]
 pub enum CryptoError {
@@ -69,6 +73,8 @@ pub struct CryptoEngine {
     ecdh_public: PublicKey,
     ed25519_keypair: SigningKey,
     ed25519_public: VerifyingKey,
+    #[cfg(feature = "post-quantum")]
+    pq_engine: Option<PostQuantumEngine>,
 }
 
 impl CryptoEngine {
@@ -84,11 +90,16 @@ impl CryptoEngine {
         let ed25519_keypair = SigningKey::from_bytes(&secret_key);
         let ed25519_public = ed25519_keypair.verifying_key();
 
+        #[cfg(feature = "post-quantum")]
+        let pq_engine = PostQuantumEngine::new().ok();
+
         Self {
             ecdh_secret,
             ecdh_public,
             ed25519_keypair,
             ed25519_public,
+            #[cfg(feature = "post-quantum")]
+            pq_engine,
         }
     }
 
@@ -253,5 +264,136 @@ impl CryptoEngine {
         let mut nonce = [0u8; 16];
         rand::thread_rng().fill_bytes(&mut nonce);
         nonce
+    }
+
+    /// Generate a random session key (32 bytes for AES-256)
+    pub fn generate_session_key() -> [u8; 32] {
+        let mut key = [0u8; 32];
+        rand::thread_rng().fill_bytes(&mut key);
+        key
+    }
+
+    /// Sign data using Ed25519 (alias for sign_log_entry)
+    pub fn sign_data(&self, data: &[u8]) -> Result<Vec<u8>, CryptoError> {
+        self.sign_log_entry(data)
+    }
+
+    /// Generate HMAC using SHA256
+    pub fn generate_hmac(key: &[u8], data: &[u8]) -> Result<Vec<u8>, CryptoError> {
+        Ok(Self::compute_hmac(key, data))
+    }
+
+    /// HKDF key derivation using SHA-256
+    pub fn hkdf_derive_key(&self, ikm: &[u8], info: &[u8], length: usize) -> Result<[u8; 32], CryptoError> {
+        use sha2::{Sha256, Digest};
+
+        // For simplicity, we'll use a simple KDF. In production, use proper HKDF
+        let mut output = [0u8; 32];
+
+        // Simple KDF: Hash(ikm + info)
+        let mut hasher = Sha256::default();
+        hasher.update(ikm);
+        hasher.update(info);
+        let hash = hasher.finalize();
+
+        output.copy_from_slice(&hash[..32]);
+
+        Ok(output)
+    }
+
+    /// Check if post-quantum cryptography is available
+    pub fn has_post_quantum(&self) -> bool {
+        #[cfg(feature = "post-quantum")]
+        {
+            self.pq_engine.is_some()
+        }
+        #[cfg(not(feature = "post-quantum"))]
+        {
+            false
+        }
+    }
+
+    /// Get Kyber public key for post-quantum key exchange
+    #[cfg(feature = "post-quantum")]
+    pub fn kyber_public_key(&self) -> Option<&crate::post_quantum::KyberPublicKey> {
+        self.pq_engine.as_ref()?.kyber_public_key()
+    }
+
+    /// Get Dilithium public key for post-quantum signatures
+    #[cfg(feature = "post-quantum")]
+    pub fn dilithium_public_key(&self) -> Option<&crate::post_quantum::DilithiumPublicKey> {
+        self.pq_engine.as_ref()?.dilithium_public_key()
+    }
+
+    /// Perform post-quantum key encapsulation
+    #[cfg(feature = "post-quantum")]
+    pub fn pq_encapsulate_secret(&self, peer_pk: &crate::post_quantum::KyberPublicKey) -> Result<KyberCiphertextData, CryptoError> {
+        self.pq_engine.as_ref()
+            .ok_or(CryptoError::GenericError("Post-quantum not available".to_string()))?
+            .encapsulate_secret(peer_pk)
+    }
+
+    /// Perform post-quantum key decapsulation
+    #[cfg(feature = "post-quantum")]
+    pub fn pq_decapsulate_secret(&self, ciphertext: &crate::post_quantum::KyberCiphertext) -> Result<crate::post_quantum::KyberSharedSecret, CryptoError> {
+        self.pq_engine.as_ref()
+            .ok_or(CryptoError::GenericError("Post-quantum not available".to_string()))?
+            .decapsulate_secret(ciphertext)
+    }
+
+    /// Sign data with post-quantum Dilithium signature
+    #[cfg(feature = "post-quantum")]
+    pub fn pq_sign_data(&self, data: &[u8]) -> Result<crate::post_quantum::DilithiumSignature, CryptoError> {
+        self.pq_engine.as_ref()
+            .ok_or(CryptoError::GenericError("Post-quantum not available".to_string()))?
+            .sign_data(data)
+    }
+
+    /// Verify post-quantum Dilithium signature
+    #[cfg(feature = "post-quantum")]
+    pub fn pq_verify_signature(&self, data: &[u8], signature: &crate::post_quantum::DilithiumSignature, public_key: &crate::post_quantum::DilithiumPublicKey) -> Result<bool, CryptoError> {
+        self.pq_engine.as_ref()
+            .ok_or(CryptoError::GenericError("Post-quantum not available".to_string()))?
+            .verify_signature(data, signature, public_key)
+    }
+
+    /// Hybrid key exchange: Combine classical ECDH with post-quantum Kyber
+    #[cfg(feature = "post-quantum")]
+    pub fn hybrid_key_exchange(&mut self, peer_ecdh_key: &[u8], peer_kyber_key: &crate::post_quantum::KyberPublicKey) -> Result<[u8; 32], CryptoError> {
+        // Perform classical ECDH
+        let classical_session = self.derive_ephemeral_shared_secret(peer_ecdh_key)?;
+
+        // Perform post-quantum key exchange
+        let pq_ciphertext = self.pq_encapsulate_secret(peer_kyber_key)?;
+        let pq_shared_secret = self.pq_decapsulate_secret(&pq_ciphertext.ciphertext)?;
+
+        // Combine secrets using HKDF
+        let mut combined_secret = [0u8; 64];
+        combined_secret[..32].copy_from_slice(classical_session.key());
+        combined_secret[32..].copy_from_slice(pq_shared_secret.as_bytes());
+
+        // Derive final key
+        self.hkdf_derive_key(&combined_secret, b"hybrid-key-exchange", 32)
+    }
+
+    /// Hybrid signature: Sign with both Ed25519 and Dilithium
+    #[cfg(feature = "post-quantum")]
+    pub fn hybrid_sign_data(&self, data: &[u8]) -> Result<(Vec<u8>, crate::post_quantum::DilithiumSignature), CryptoError> {
+        let classical_sig = self.sign_data(data)?;
+        let pq_sig = self.pq_sign_data(data)?;
+
+        Ok((classical_sig, pq_sig))
+    }
+
+    /// Hybrid signature verification
+    #[cfg(feature = "post-quantum")]
+    pub fn hybrid_verify_signature(&self, data: &[u8], classical_sig: &[u8], pq_sig: &crate::post_quantum::DilithiumSignature, pq_public_key: &crate::post_quantum::DilithiumPublicKey) -> Result<bool, CryptoError> {
+        // Verify classical signature
+        let classical_valid = self.verify_log_signature(self.ed25519_public_key().as_bytes(), data, classical_sig).is_ok();
+
+        // Verify post-quantum signature
+        let pq_valid = self.pq_verify_signature(data, pq_sig, pq_public_key)?;
+
+        Ok(classical_valid && pq_valid)
     }
 }

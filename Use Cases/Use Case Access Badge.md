@@ -8,7 +8,7 @@
 • 	Badge presented to an EV or drone charging station → charging only starts if validation succeeds.
 • 	Restricts charging access to authorized users (fleets, staff, certified drones).
 
-3. Complexe Mission Transmission for Drones or droide / robbots
+3. Mission Transmission for Drones
 • 	Badge stores or displays a QR mission payload (patrol routes, control points, actions).
 • 	Drone reads the QR + receives ultrasonic burst → mission securely validated and timestamped.
 • 	Prevents unauthorized drones from receiving or executing commands.
@@ -35,5 +35,4 @@
 • 	Local security: no network dependency → resistant to remote attacks.
 • 	Anti‑replay: QR + ultrasonic coupling, valid only for a few seconds.
 • 	Human‑in‑the‑loop: PIN and checkboxes for critical authorizations.
-
 • 	Auditability: signed logs, traceable, exportable.

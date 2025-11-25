@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.Rgibberlink.app-mergeDebugResources-53:/layout/activity_permission_authorization.xml",
+        "source": "com.Rgibberlink.app-main-56:/layout/activity_permission_authorization.xml"
+    },
+    {
+        "merged": "com.Rgibberlink.app-mergeDebugResources-53:/layout/activity_main.xml",
+        "source": "com.Rgibberlink.app-main-56:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.Rgibberlink.app-mergeDebugResources-53:/layout/activity_face_validation.xml",
+        "source": "com.Rgibberlink.app-main-56:/layout/activity_face_validation.xml"
+    }
+]

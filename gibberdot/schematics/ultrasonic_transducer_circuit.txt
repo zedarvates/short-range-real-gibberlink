@@ -1,0 +1,117 @@
+Ultrasonic Transducer Interface Circuit - GibberDot Module v1.0
+================================================================
+
+40kHz Piezoelectric Transducer Interface with Band-Pass Filter
+Power: 1W peak output, 8µA standby consumption
+
+┌─────────────────────────────────────────────────────────────────┐
+│                        TRANSMIT PATH                           │
+├─────────────────────────────────────────────────────────────────┤
+│  CH32V003 PD0 (PWM Output)                                      │
+│         │                                                       │
+│         ▼                                                       │
+│    ┌─────────┐     ┌─────────────┐     ┌─────────────┐          │
+│    │  10kΩ   │     │   MOSFET    │     │   40kHz     │          │
+│    │ Pull-up │────►│   Driver    │────►│   BPF       │─────┐    │
+│    └─────────┘     │   (N-CH)    │     │   Filter     │     │    │
+│                    └─────────────┘     └─────────────┘     │    │
+│                           │                     │          │    │
+│                           ▼                     ▼          │    │
+│                    ┌─────────────┐     ┌─────────────┐     │    │
+│                    │   Gate      │     │   Matching  │     │    │
+│                    │   Resistor  │     │   Network   │     │    │
+│                    │   100Ω      │     │   (LC)      │     │    │
+│                    └─────────────┘     └─────────────┘     │    │
+│                                                         │    │
+│                                                         ▼    │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │               PIEZO TRANSDUCER                        │ │
+│  │              40kHz SPEAKER/MICROPHONE                  │ │
+│  │                                                        │ │
+│  │  ○────────────────────────────────────────────────○   │ │
+│  │  │                                                │   │ │
+│  │  └────────────────────────────────────────────────┘   │ │
+│  └────────────────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────────┤
+│                        RECEIVE PATH                           │
+├─────────────────────────────────────────────────────────────────┤
+│  Piezo Transducer Output                                      │
+│         ▲                                                       │
+│         │                                                       │
+│    ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     │
+│    │   Coupling  │     │   40kHz     │     │   Amplifier  │     │
+│    │   Capacitor │────►│   BPF       │────►│   (x100)    │────►│
+│    │   10nF      │     │   Filter     │     │   Low Noise │     │
+│    └─────────────┘     └─────────────┘     └─────────────┘     │
+│         ▲                     ▲                     ▲          │
+│         │                     │                     │          │
+│    ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     │
+│    │   Bias      │     │   Q-Factor  │     │   Gain      │     │
+│    │   Network   │     │   Tuning    │     │   Control   │     │
+│    │   (2.5V)    │     │   (R=10k)   │     │   (POT)     │     │
+│    └─────────────┘     └─────────────┘     └─────────────┘     │
+│                                                                       │
+│  Output to CH32V003 PD6 (ADC/Comparator Input)                      │
+└─────────────────────────────────────────────────────────────────────┘
+
+Band-Pass Filter Design (40kHz ±2kHz):
+──────────────────────────────────────
+Center Frequency: f0 = 40kHz
+Bandwidth: BW = 4kHz (Q = 10)
+Quality Factor: Q = f0/BW = 10
+
+Components:
+• L1 = 10µH (air core inductor)
+• C1 = C2 = 1.59nF (ceramic, ±5%)
+• R1 = 10kΩ (bandwidth control)
+
+Transfer Function:
+H(f) = (R1/(R1 + 1/(2πfC))) / (1 + jQ(f/f0 - f0/f))
+
+Amplifier Design:
+────────────────
+Gain: 100x (40dB) for weak ultrasonic signals
+Input Impedance: 1MΩ (high impedance for transducer)
+Output: 0-2.5V for ADC input
+Noise Figure: <3dB for -60dB SNR requirement
+
+Components:
+• Op-Amp: TLC271 (ultra-low power, 1.4V/µA)
+• Rg = 1kΩ (gain setting)
+• Rf = 100kΩ (feedback)
+• Cfb = 10pF (stability)
+• Rb = 10kΩ (bias network)
+
+Power Consumption:
+──────────────────
+• Standby: 8µA (MCU + LDO + bias network)
+• Transmit: 1W peak (MOSFET driver + transducer)
+• Receive: 50µA (amplifier active)
+• Burst Efficiency: 85% (PWM drive)
+
+Signal Specifications:
+──────────────────────
+• Transmit Power: 1W peak (120dB SPL @ 10cm)
+• Receive Sensitivity: -60dB SNR (3m range in darkness)
+• Frequency Accuracy: ±100Hz (crystal controlled)
+• Harmonic Distortion: <1% THD
+• Crosstalk: <-40dB (TX/RX isolation)
+
+Calibration:
+───────────
+1. Frequency Response: Sweep 30-50kHz, measure amplitude
+2. Sensitivity: Fixed 1W transmit power, measure range
+3. Linearity: Vary transmit power, check amplitude response
+4. Temperature: Test -20°C to +65°C, verify frequency shift <200Hz
+5. Humidity: Test 0-95% RH, verify sensitivity variation <3dB
+
+Manufacturing Test Points:
+──────────────────────────
+• TP1: PWM output (PD0)
+• TP2: BPF input (pre-filter)
+• TP3: BPF output (post-filter)
+• TP4: Amplifier output (to ADC)
+• TP5: Battery voltage reference
+• TP6: 2.5V regulated supply
+
+The ultrasonic interface achieves the 3m communication range in darkness while maintaining ultra-low standby power consumption and meeting the 280ms handshake timing requirement.

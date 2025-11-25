@@ -2,7 +2,7 @@
 
 ## Welcome to RealGibber
 
-RealGibber is a comprehensive suite of secure directional communication protocols designed for autonomous systems. This guide will help you get started quickly with your first RealGibber implementation.
+RealGibber is a comprehensive suite of secure directional communication protocols designed specifically for mission-critical autonomous systems. This guide will help you get started quickly with your first RealGibber implementation, from installation to your first secure communication.
 
 ## Prerequisites
 
@@ -15,10 +15,10 @@ Before you begin, ensure you have the following installed:
 - **Android SDK**: Version 11+ (for Android development)
 
 ### Hardware Requirements (for full functionality)
-- Camera with autofocus capability
-- Microphone with low-latency support
-- GPS module (optional)
-- Laser module (for long-range communication)
+- **Camera**: With autofocus capability (1080p minimum for QR code scanning)
+- **Microphone/Speaker**: Low-latency audio I/O for ultrasonic communication
+- **GPS Module**: Optional, for location-based features
+- **Laser Module**: Required for long-range communication (50-200m range)
 
 ## Quick Installation
 

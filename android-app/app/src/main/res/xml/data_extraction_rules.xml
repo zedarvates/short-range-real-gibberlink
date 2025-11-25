@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- TODO: Use <include> and <exclude> tags to control what data is backed up.
+        <include .../>
+        <exclude .../>
+        -->
+    </cloud-backup>
+    <!-- Device transfers are opt-in, so this currently has no effect -->
+    <device-transfer>
+        <!-- TODO: Use <include> and <exclude> tags to control what data is transferred.
+        <include .../>
+        <exclude .../>
+        -->
+    </device-transfer>
+</data-extraction-rules>

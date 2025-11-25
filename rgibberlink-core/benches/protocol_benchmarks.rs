@@ -1,7 +1,6 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use gibberlink_core::protocol::ProtocolEngine;
 use gibberlink_core::crypto::CryptoEngine;
-use std::sync::Arc;
 use tokio::runtime::Runtime;
 
 fn protocol_benchmarks(c: &mut Criterion) {
@@ -11,7 +10,7 @@ fn protocol_benchmarks(c: &mut Criterion) {
     // Handshake initiation benchmark
     group.bench_function("handshake_initiation", |b| {
         b.iter(|| {
-            let protocol = ProtocolEngine::new();
+            let mut protocol = ProtocolEngine::new();
             let _result = black_box(rt.block_on(async {
                 protocol.initiate_handshake().await
             }));
@@ -105,7 +104,7 @@ fn perform_handshake_flow() {
     let rt = Runtime::new().unwrap();
 
     // Device A (initiator)
-    let device_a = ProtocolEngine::new();
+    let mut device_a = ProtocolEngine::new();
 
     // Device B (receiver)
     let device_b = ProtocolEngine::new();
@@ -162,7 +161,7 @@ fn latency_benchmarks(c: &mut Criterion) {
 
 fn throughput_benchmarks(c: &mut Criterion) {
     let mut group = c.benchmark_group("protocol_throughput");
-    let rt = Runtime::new().unwrap();
+    let _rt = Runtime::new().unwrap();
 
     // Concurrent handshake throughput
     group.bench_function("concurrent_handshakes_10", |b| {

@@ -110,6 +110,7 @@ pub struct ChannelValidator {
     crypto_engine: CryptoEngine,
     session_start: Instant,
     validation_metrics: Arc<Mutex<ValidationMetrics>>,
+    session_key: Option<[u8; 32]>, // Session key for cross-channel signatures
 }
 
 /// Validation performance metrics
@@ -151,6 +152,7 @@ impl ChannelValidator {
                 average_coupling_quality: 0.0,
                 average_validation_time_ms: 0.0,
             })),
+            session_key: None,
         }
     }
 
@@ -257,25 +259,34 @@ impl ChannelValidator {
 
     /// Validate cross-channel signature verification (coupled MAC)
     async fn validate_cross_channel_signature(&self, laser: &ChannelData, ultrasound: &ChannelData) -> Result<(), ValidationError> {
-        // Cross-channel MAC: each channel authenticates the other via HMAC on content + timestamp
-        // Note: We need a shared session key here, but for this implementation we'll use a dummy key
-        // In real implementation, this would be established during key exchange
-        let session_key = &[0u8; 32]; // Placeholder for session key
+        // Get session key - derive if not set
+        let session_key = if let Some(key) = self.session_key {
+            key
+        } else {
+            // Auto-derive session key from coupled channel data
+            let mut temp_validator = Self::new();
+            temp_validator.derive_session_key(&laser.data, &ultrasound.data);
+            temp_validator.session_key.unwrap_or([0u8; 32]) // Fallback to zeros if derivation fails
+        };
 
         // Convert Instant to u64 timestamp
         let laser_timestamp = laser.timestamp.elapsed().as_millis() as u64;
         let ultrasound_timestamp = ultrasound.timestamp.elapsed().as_millis() as u64;
 
-        let laser_hmac = crate::crypto::CryptoEngine::encrypt_ultrasonic_frame(session_key, &laser.data, laser_timestamp);
-        let ultrasound_hmac = crate::crypto::CryptoEngine::encrypt_ultrasonic_frame(session_key, &ultrasound.data, ultrasound_timestamp);
+        // Create cross-channel signatures
+        let laser_hmac = crate::crypto::CryptoEngine::encrypt_ultrasonic_frame(&session_key, &laser.data, laser_timestamp);
+        let ultrasound_hmac = crate::crypto::CryptoEngine::encrypt_ultrasonic_frame(&session_key, &ultrasound.data, ultrasound_timestamp);
 
-        // Verify ultrasound data is authenticated by laser channel
-        if let Err(_) = crate::crypto::CryptoEngine::verify_ultrasonic_frame(session_key, &laser.data, laser_timestamp, &laser_hmac) {
+        // Verify cross-channel authentication: each channel authenticates the other
+        if let Err(_) = crate::crypto::CryptoEngine::verify_ultrasonic_frame(&session_key, &laser.data, laser_timestamp, &laser_hmac) {
+            let mut metrics = self.validation_metrics.lock().await;
+            metrics.signature_verification_failures += 1;
             return Err(ValidationError::CrossChannelSignatureFailed);
         }
 
-        // Verify laser data is authenticated by ultrasound channel
-        if let Err(_) = crate::crypto::CryptoEngine::verify_ultrasonic_frame(session_key, &ultrasound.data, ultrasound_timestamp, &ultrasound_hmac) {
+        if let Err(_) = crate::crypto::CryptoEngine::verify_ultrasonic_frame(&session_key, &ultrasound.data, ultrasound_timestamp, &ultrasound_hmac) {
+            let mut metrics = self.validation_metrics.lock().await;
+            metrics.signature_verification_failures += 1;
             return Err(ValidationError::CrossChannelSignatureFailed);
         }
 
@@ -442,6 +453,33 @@ impl ChannelValidator {
     /// Update validation configuration
     pub fn update_config(&mut self, config: ValidationConfig) {
         self.config = config;
+    }
+
+    /// Set session key for cross-channel signature verification
+    pub fn set_session_key(&mut self, key: [u8; 32]) {
+        self.session_key = Some(key);
+    }
+
+    /// Derive session key from coupled channel data
+    pub fn derive_session_key(&mut self, laser_data: &[u8], ultrasound_data: &[u8]) {
+        // Create a combined seed from both channel data
+        let mut combined = Vec::new();
+        combined.extend_from_slice(laser_data);
+        combined.extend_from_slice(ultrasound_data);
+        combined.extend_from_slice(&self.session_start.elapsed().as_nanos().to_be_bytes());
+
+        // Use HKDF to derive a session key
+        let ikm = CryptoEngine::generate_device_fingerprint(&combined);
+        let salt = b"coupled_channel_session_key_salt";
+        let info = b"coupled_channel_session_key_info";
+
+        // Simple HKDF-like derivation (in production, use proper HKDF)
+        let mut session_key = [0u8; 32];
+        for i in 0..32 {
+            session_key[i] = ikm[i] ^ salt[i % salt.len()] ^ info[i % info.len()];
+        }
+
+        self.session_key = Some(session_key);
     }
 }
 

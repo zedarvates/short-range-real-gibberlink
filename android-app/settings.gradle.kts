@@ -10,7 +10,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://raw.githubusercontent.com/signalapp/Signal-Android/master") }
         maven { url = uri("https://jitpack.io") }
     }
 }
