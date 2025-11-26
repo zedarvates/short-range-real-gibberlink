@@ -2,7 +2,7 @@
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![Rust](https://img.shields.io/badge/Rust-1.76-orange)
 ![Platform](https://img.shields.io/badge/platform-android%20%7C%20linux%20%7C%20windows-blue)
-![CI](https://github.com/zedarvates/short-range-real-gibberlink/actions/workflows/ci.yml/badge.svg)
+
 [![Rust](https://img.shields.io/badge/rust-1.70+-000000.svg?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
 [![Android](https://img.shields.io/badge/android-11+-3DDC84.svg?style=for-the-badge&logo=android)](https://developer.android.com/)
 [![Python](https://img.shields.io/badge/python-3.8+-3776AB.svg?style=for-the-badge&logo=python)](https://www.python.org/)
