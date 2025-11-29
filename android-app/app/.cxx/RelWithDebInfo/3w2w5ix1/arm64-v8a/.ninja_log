@@ -1,10 +1,3 @@
 # ninja log v5
-0	2380	7857559983378653	CMakeFiles/gibberlink-jni.dir/gibberlink-jni.cpp.o	ec548232287befa6
-4	1199	7857562077055006	CMakeFiles/gibberlink-jni.dir/gibberlink-jni.cpp.o	ec548232287befa6
-1199	1329	7857562078420000	D:/_ APP/RealGibber/android-app/app/build/intermediates/cxx/RelWithDebInfo/3w2w5ix1/obj/arm64-v8a/libgibberlink-jni.so	ac9d598857ecd948
-0	9	0	clean	b914ad4ce305721d
-6	1375	7857564449756420	CMakeFiles/gibberlink-jni.dir/gibberlink-jni.cpp.o	ec548232287befa6
-1376	1482	7857564450831803	D:/_ APP/RealGibber/android-app/app/build/intermediates/cxx/RelWithDebInfo/3w2w5ix1/obj/arm64-v8a/libgibberlink-jni.so	ac9d598857ecd948
-0	9	0	clean	b914ad4ce305721d
-6	1237	7857565143380434	CMakeFiles/gibberlink-jni.dir/gibberlink-jni.cpp.o	ec548232287befa6
-1237	1330	7857565144360429	D:/_ APP/RealGibber/android-app/app/build/intermediates/cxx/RelWithDebInfo/3w2w5ix1/obj/arm64-v8a/libgibberlink-jni.so	ac9d598857ecd948
+1	2649	7859535020389051	CMakeFiles/gibberlink-jni.dir/gibberlink-jni.cpp.o	b969cac2a079ecd9
+2660	2809	7859535022069306	C:/Users/redga/Documents/GitHub/RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones/android-app/app/build/intermediates/cxx/RelWithDebInfo/3w2w5ix1/obj/arm64-v8a/libgibberlink-jni.so	5ed6698ecfa92d2e

@@ -48,10 +48,10 @@ com.Rgibberlink.app-lifecycle-runtime-2.7.0-46 C:\Users\redga\.gradle\caches\tra
 com.Rgibberlink.app-jetified-camera-view-1.3.1-47 C:\Users\redga\.gradle\caches\transforms-3\fb15c4207677daed4e58e6ff2dcd71f4\transformed\jetified-camera-view-1.3.1\res
 com.Rgibberlink.app-jetified-lifecycle-service-2.7.0-48 C:\Users\redga\.gradle\caches\transforms-3\fcd714355ea51cba7ed7010fda136e39\transformed\jetified-lifecycle-service-2.7.0\res
 com.Rgibberlink.app-appcompat-1.6.1-49 C:\Users\redga\.gradle\caches\transforms-3\ff73f0b0306c9a64261bcc317a9d52ad\transformed\appcompat-1.6.1\res
-com.Rgibberlink.app-pngs-50 D:\_ APP\RealGibber\android-app\app\build\generated\res\pngs\release
-com.Rgibberlink.app-resValues-51 D:\_ APP\RealGibber\android-app\app\build\generated\res\resValues\release
-com.Rgibberlink.app-packageReleaseResources-52 D:\_ APP\RealGibber\android-app\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
-com.Rgibberlink.app-packageReleaseResources-53 D:\_ APP\RealGibber\android-app\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
-com.Rgibberlink.app-merged_res-54 D:\_ APP\RealGibber\android-app\app\build\intermediates\merged_res\release
-com.Rgibberlink.app-main-55 D:\_ APP\RealGibber\android-app\app\src\main\res
-com.Rgibberlink.app-release-56 D:\_ APP\RealGibber\android-app\app\src\release\res
+com.Rgibberlink.app-pngs-50 C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\build\generated\res\pngs\release
+com.Rgibberlink.app-resValues-51 C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\build\generated\res\resValues\release
+com.Rgibberlink.app-packageReleaseResources-52 C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
+com.Rgibberlink.app-packageReleaseResources-53 C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
+com.Rgibberlink.app-merged_res-54 C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\build\intermediates\merged_res\release
+com.Rgibberlink.app-main-55 C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\res
+com.Rgibberlink.app-release-56 C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\release\res

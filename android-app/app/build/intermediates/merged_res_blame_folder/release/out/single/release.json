@@ -1,19 +1,27 @@
 [
     {
-        "merged": "com.Rgibberlink.app-merged_res-54:/layout_activity_permission_authorization.xml.flat",
-        "source": "com.Rgibberlink.app-main-55:/layout/activity_permission_authorization.xml"
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-merged_res-54:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.Rgibberlink.app-merged_res-54:/xml_data_extraction_rules.xml.flat",
-        "source": "com.Rgibberlink.app-main-55:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-merged_res-54:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.Rgibberlink.app-merged_res-54:/layout_activity_main.xml.flat",
-        "source": "com.Rgibberlink.app-main-55:/layout/activity_main.xml"
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-merged_res-54:\\layout_activity_range_detection.xml.flat",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\layout\\activity_range_detection.xml"
     },
     {
-        "merged": "com.Rgibberlink.app-merged_res-54:/xml_backup_rules.xml.flat",
-        "source": "com.Rgibberlink.app-main-55:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-merged_res-54:\\layout_activity_permission_authorization.xml.flat",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\layout\\activity_permission_authorization.xml"
+    },
+    {
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-merged_res-54:\\layout_activity_face_validation.xml.flat",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\layout\\activity_face_validation.xml"
+    },
+    {
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-merged_res-54:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\xml\\data_extraction_rules.xml"
     },
     {
         "merged": "com.Rgibberlink.app-merged_res-54:/layout_activity_face_validation.xml.flat",

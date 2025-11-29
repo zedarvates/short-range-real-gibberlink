@@ -80,6 +80,8 @@ class PermissionAuthorizationActivity : AppCompatActivity() {
 
     // Managers
     private lateinit var permissionManager: PermissionManager
+    private val prefs by lazy { getSharedPreferences("gibberlink_auth", Context.MODE_PRIVATE) }
+
 
     // Connection data from intent
     private var peerIdentity = "GL-AB12-CDEF"
@@ -267,6 +269,15 @@ class PermissionAuthorizationActivity : AppCompatActivity() {
         completeAuthorization()
     }
 
+    private fun handleFailedPinAttempt() {
+        val deviceLocked = permissionManager.handleFailedPinAttempt()
+        if (deviceLocked) {
+            lockDevice()
+        } else {
+            updateLockoutWarning()
+            Toast.makeText(this, "Incorrect PIN", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private fun updateLockoutWarning() {
         val remainingAttempts = permissionManager.getRemainingAttempts()
@@ -348,7 +359,6 @@ class PermissionAuthorizationActivity : AppCompatActivity() {
             scope = scope,
             biometricUsed = biometricUsed
         )
-    }
     }
 
 

@@ -113,7 +113,7 @@
             android:layout_height="64dp"
             android:layout_marginBottom="16dp"
             android:src="@android:drawable/ic_menu_camera"
-            android:tint="@android:color/holo_green_light"
+            app:tint="@android:color/holo_green_light"
             android:contentDescription="Success" />
 
         <TextView

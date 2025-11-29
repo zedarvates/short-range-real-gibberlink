@@ -6,9 +6,9 @@
     "deprecated": false,
     "default": true
   },
-  "cxxBuildFolder": "D:\\_ APP\\RealGibber\\android-app\\app\\.cxx\\Debug\\5w2y5t6g\\arm64-v8a",
-  "soFolder": "D:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates\\cxx\\Debug\\5w2y5t6g\\obj\\arm64-v8a",
-  "soRepublishFolder": "D:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates\\cmake\\debug\\obj\\arm64-v8a",
+  "cxxBuildFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\.cxx\\Debug\\5w2y5t6g\\arm64-v8a",
+  "soFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\build\\intermediates\\cxx\\Debug\\5w2y5t6g\\obj\\arm64-v8a",
+  "soRepublishFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\build\\intermediates\\cmake\\debug\\obj\\arm64-v8a",
   "abiPlatformVersion": 24,
   "cmake": {
     "effectiveConfiguration": {
@@ -33,13 +33,13 @@
     "implicitBuildTargetSet": [],
     "cmakeSettingsConfiguration": "android-gradle-plugin-predetermined-name",
     "module": {
-      "cxxFolder": "D:\\_ APP\\RealGibber\\android-app\\app\\.cxx",
-      "intermediatesBaseFolder": "D:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates",
-      "intermediatesFolder": "D:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates\\cxx",
+      "cxxFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\.cxx",
+      "intermediatesBaseFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\build\\intermediates",
+      "intermediatesFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\build\\intermediates\\cxx",
       "gradleModulePathName": ":app",
-      "moduleRootFolder": "D:\\_ APP\\RealGibber\\android-app\\app",
-      "moduleBuildFile": "D:\\_ APP\\RealGibber\\android-app\\app\\build.gradle.kts",
-      "makeFile": "D:\\_ APP\\RealGibber\\android-app\\app\\src\\main\\cpp\\CMakeLists.txt",
+      "moduleRootFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app",
+      "moduleBuildFile": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\build.gradle.kts",
+      "makeFile": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\src\\main\\cpp\\CMakeLists.txt",
       "buildSystem": "CMAKE",
       "ndkFolder": "d:\\_ APP\\RealGibber\\android-ndk\\android-ndk-r27c",
       "ndkVersion": "27.2.12479018",
@@ -125,7 +125,7 @@
         "SYSTEM": {}
       },
       "project": {
-        "rootBuildGradleFolder": "D:\\_ APP\\RealGibber\\android-app",
+        "rootBuildGradleFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app",
         "sdkFolder": "C:\\Users\\redga\\AppData\\Local\\Android\\Sdk",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
@@ -144,12 +144,12 @@
   "buildSettings": {
     "environmentVariables": []
   },
-  "prefabFolder": "D:\\_ APP\\RealGibber\\android-app\\app\\.cxx\\Debug\\5w2y5t6g\\prefab\\arm64-v8a",
+  "prefabFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\.cxx\\Debug\\5w2y5t6g\\prefab\\arm64-v8a",
   "isActiveAbi": true,
   "fullConfigurationHash": "5w2y5t6g4o68l72j6x1e442p5k6e3b5sq1s273s191g5g593x3z34t616y2s",
   "fullConfigurationHashKey": "# Values used to calculate the hash in this folder name.\n# Should not depend on the absolute path of the project itself.\n#   - AGP: 8.1.4.\n#   - $NDK is the path to NDK 27.2.12479018.\n#   - $PROJECT is the path to the parent folder of the root Gradle build file.\n#   - $ABI is the ABI to be built with. The specific value doesn\u0027t contribute to the value of the hash.\n#   - $HASH is the hash value computed from this text.\n#   - $CMAKE is the path to CMake 3.22.1.\n#   - $NINJA is the path to Ninja.\n-H$PROJECT/app/src/main/cpp\n-DCMAKE_SYSTEM_NAME\u003dAndroid\n-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\n-DCMAKE_SYSTEM_VERSION\u003d24\n-DANDROID_PLATFORM\u003dandroid-24\n-DANDROID_ABI\u003d$ABI\n-DCMAKE_ANDROID_ARCH_ABI\u003d$ABI\n-DANDROID_NDK\u003d$NDK\n-DCMAKE_ANDROID_NDK\u003d$NDK\n-DCMAKE_TOOLCHAIN_FILE\u003d$NDK/build/cmake/android.toolchain.cmake\n-DCMAKE_MAKE_PROGRAM\u003d$NINJA\n-DCMAKE_CXX_FLAGS\u003d-std\u003dc++17 -frtti -fexceptions\n-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d$PROJECT/app/build/intermediates/cxx/Debug/$HASH/obj/$ABI\n-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d$PROJECT/app/build/intermediates/cxx/Debug/$HASH/obj/$ABI\n-DCMAKE_BUILD_TYPE\u003dDebug\n-B$PROJECT/app/.cxx/Debug/$HASH/$ABI\n-GNinja",
   "configurationArguments": [
-    "-HD:\\_ APP\\RealGibber\\android-app\\app\\src\\main\\cpp",
+    "-HC:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\src\\main\\cpp",
     "-DCMAKE_SYSTEM_NAME\u003dAndroid",
     "-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON",
     "-DCMAKE_SYSTEM_VERSION\u003d24",
@@ -161,11 +161,11 @@
     "-DCMAKE_TOOLCHAIN_FILE\u003dd:\\_ APP\\RealGibber\\android-ndk\\android-ndk-r27c\\build\\cmake\\android.toolchain.cmake",
     "-DCMAKE_MAKE_PROGRAM\u003dC:\\Users\\redga\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
     "-DCMAKE_CXX_FLAGS\u003d-std\u003dc++17 -frtti -fexceptions",
-    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dD:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates\\cxx\\Debug\\5w2y5t6g\\obj\\arm64-v8a",
-    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003dD:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates\\cxx\\Debug\\5w2y5t6g\\obj\\arm64-v8a",
+    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dC:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\build\\intermediates\\cxx\\Debug\\5w2y5t6g\\obj\\arm64-v8a",
+    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003dC:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\build\\intermediates\\cxx\\Debug\\5w2y5t6g\\obj\\arm64-v8a",
     "-DCMAKE_BUILD_TYPE\u003dDebug",
-    "-BD:\\_ APP\\RealGibber\\android-app\\app\\.cxx\\Debug\\5w2y5t6g\\arm64-v8a",
+    "-BC:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\.cxx\\Debug\\5w2y5t6g\\arm64-v8a",
     "-GNinja"
   ],
-  "intermediatesParentFolder": "D:\\_ APP\\RealGibber\\android-app\\app\\build\\intermediates\\cxx\\Debug\\5w2y5t6g"
+  "intermediatesParentFolder": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\build\\intermediates\\cxx\\Debug\\5w2y5t6g"
 }

@@ -1,11 +1,19 @@
 [
     {
-        "merged": "com.Rgibberlink.app-mergeReleaseResources-53:/layout/activity_permission_authorization.xml",
-        "source": "com.Rgibberlink.app-main-55:/layout/activity_permission_authorization.xml"
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-mergeReleaseResources-53:\\layout\\activity_range_detection.xml",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\layout\\activity_range_detection.xml"
     },
     {
-        "merged": "com.Rgibberlink.app-mergeReleaseResources-53:/layout/activity_main.xml",
-        "source": "com.Rgibberlink.app-main-55:/layout/activity_main.xml"
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-mergeReleaseResources-53:\\layout\\activity_face_validation.xml",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\layout\\activity_face_validation.xml"
+    },
+    {
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-mergeReleaseResources-53:\\layout\\activity_permission_authorization.xml",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\layout\\activity_permission_authorization.xml"
+    },
+    {
+        "merged": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-mergeReleaseResources-53:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\redga\\.gradle\\daemon\\8.5\\com.Rgibberlink.app-main-55:\\layout\\activity_main.xml"
     },
     {
         "merged": "com.Rgibberlink.app-mergeReleaseResources-53:/layout/activity_face_validation.xml",

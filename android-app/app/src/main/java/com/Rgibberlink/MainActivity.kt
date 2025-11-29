@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var lockoutWarning: TextView
     private lateinit var progressBar: ProgressBar
 
-    // Preferences
+    // Encrypted Preferences
     private lateinit var prefs: android.content.SharedPreferences
 
     // Biometric
@@ -55,8 +55,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize preferences
-        prefs = getSharedPreferences("gibberlink_app", Context.MODE_PRIVATE)
+        // Initialize encrypted preferences
+        val masterKey = MasterKey.Builder(applicationContext)
+            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+            .build()
+
+        prefs = EncryptedSharedPreferences.create(
+            applicationContext,
+            "gibberlink_secure_prefs",
+            masterKey,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
 
         // Check if this is first run
         isFirstRun = prefs.getBoolean(PREF_FIRST_RUN, true)
@@ -247,13 +257,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun validateAndSetNewPin(pin: String): Boolean {
-        if (pin.length != 4 || !pin.all { it.isDigit() }) {
-            authMessage.text = "PIN must be 4 digits"
+        // Enforce strong PIN requirements: 6-12 digits
+        if (pin.length < 6 || pin.length > 12 || !pin.all { it.isDigit() }) {
+            authMessage.text = "PIN must be 6-12 digits"
             return false
         }
 
-        if (pin == DEFAULT_PIN) {
-            authMessage.text = "Please choose a PIN other than 0000"
+        // Check for weak patterns
+        val weakPatterns = listOf("123456", "000000", "111111", "111111111", "123456789")
+        if (weakPatterns.contains(pin) || pin.toSet().size <= 2) { // All same digit or repeating
+            authMessage.text = "PIN is too weak. Choose a more complex PIN"
+            return false
+        }
+
+        // Check for sequential digits
+        val isSequential = (0..pin.length-3).any { i ->
+            val digit = pin[i].digitToInt()
+            pin[i+1].digitToInt() == digit + 1 && pin[i+2].digitToInt() == digit + 2
+        } || (0..pin.length-3).any { i ->
+            val digit = pin[i].digitToInt()
+            pin[i+1].digitToInt() == digit - 1 && pin[i+2].digitToInt() == digit - 2
+        }
+
+        if (isSequential) {
+            authMessage.text = "PIN cannot contain sequential digits"
             return false
         }
 
@@ -263,12 +290,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun validatePin(pin: String): Boolean {
-        if (pin.length != 4 || !pin.all { it.isDigit() }) {
+        // Updated validation to match new PIN requirements
+        if (pin.length < 6 || pin.length > 12 || !pin.all { it.isDigit() }) {
             return false
         }
 
-        val storedPin = prefs.getString(PREF_APP_PIN, DEFAULT_PIN) ?: DEFAULT_PIN
-        return storedPin == pin
+        val storedPin = prefs.getString(PREF_APP_PIN, null)
+        return storedPin != null && storedPin == pin
     }
 
     private fun handleFailedPinAttempt() {

@@ -1,4 +1,4 @@
-# Install script for directory: D:/_ APP/RealGibber/android-app/app/src/main/cpp
+# Install script for directory: C:/Users/redga/Documents/GitHub/RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones/android-app/app/src/main/cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/_ APP/RealGibber/android-app/app/.cxx/Debug/5w2y5t6g/arm64-v8a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/redga/Documents/GitHub/RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones/android-app/app/.cxx/Debug/5w2y5t6g/arm64-v8a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

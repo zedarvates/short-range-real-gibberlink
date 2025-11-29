@@ -10,97 +10,97 @@
 10
 11    <!-- Basic app permissions -->
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:5:5-67
-12-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:5:22-64
+12-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:5:5-67
+12-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:5:22-64
 13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:6:5-79
-13-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:6:22-76
+13-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:6:5-79
+13-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:6:22-76
 14
 15    <!-- Audio permissions for ultrasonic communication -->
 16    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-16-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:9:5-71
-16-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:9:22-68
+16-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:9:5-71
+16-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:9:22-68
 17    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-17-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:10:5-80
-17-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:10:22-77
+17-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:10:5-80
+17-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:10:22-77
 18    <uses-permission android:name="android.permission.BLUETOOTH" />
-18-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:11:5-68
-18-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:11:22-65
+18-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:11:5-68
+18-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:11:22-65
 19    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-19-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:12:5-74
-19-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:12:22-71
+19-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:12:5-74
+19-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:12:22-71
 20
 21    <!-- Camera permissions for laser alignment and QR scanning -->
 22    <uses-permission android:name="android.permission.CAMERA" />
-22-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:15:5-65
-22-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:15:22-62
+22-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:15:5-65
+22-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:15:22-62
 23
 24    <uses-feature
-24-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:16:5-84
+24-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:16:5-84
 25        android:name="android.hardware.camera"
-25-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:16:19-57
+25-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:16:19-57
 26        android:required="true" />
-26-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:16:58-81
+26-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:16:58-81
 27    <uses-feature
-27-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:17:5-95
+27-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:17:5-95
 28        android:name="android.hardware.camera.autofocus"
-28-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:17:19-67
+28-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:17:19-67
 29        android:required="false" />
-29-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:17:68-92
+29-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:17:68-92
 30
 31    <!-- Vibration permissions for haptic feedback -->
 32    <uses-permission android:name="android.permission.VIBRATE" />
-32-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:20:5-66
-32-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:20:22-63
+32-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:20:5-66
+32-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:20:22-63
 33
 34    <!-- Biometric authentication for app security -->
 35    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-35-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:23:5-72
-35-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:23:22-69
+35-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:23:5-72
+35-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:23:22-69
 36
 37    <!-- Wake lock for continuous operation -->
 38    <uses-permission android:name="android.permission.WAKE_LOCK" />
-38-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:26:5-68
-38-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:26:22-65
+38-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:26:5-68
+38-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:26:22-65
 39
 40    <!-- Hardware feature declarations for long-range components -->
 41    <uses-feature
-41-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:29:5-96
+41-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:29:5-96
 42        android:name="android.hardware.audio.low_latency"
-42-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:29:19-68
+42-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:29:19-68
 43        android:required="false" />
-43-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:29:69-93
+43-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:29:69-93
 44    <uses-feature
-44-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:30:5-88
+44-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:30:5-88
 45        android:name="android.hardware.audio.pro"
-45-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:30:19-60
+45-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:30:19-60
 46        android:required="false" />
-46-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:30:61-85
+46-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:30:61-85
 47    <uses-feature
-47-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:31:5-88
+47-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:31:5-88
 48        android:name="android.hardware.microphone"
-48-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:31:19-61
+48-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:31:19-61
 49        android:required="true" />
-49-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:31:62-85
+49-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:31:62-85
 50    <uses-feature
-50-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:32:5-88
+50-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:32:5-88
 51        android:name="android.hardware.bluetooth"
-51-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:32:19-60
+51-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:32:19-60
 52        android:required="false" />
-52-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:32:61-85
+52-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:32:61-85
 53
 54    <!-- Long-range hardware specific permissions -->
 55    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-55-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:35:5-79
-55-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:35:22-76
+55-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:35:5-79
+55-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:35:22-76
 56    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-56-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:36:5-81
-56-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:36:22-78
+56-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:36:5-81
+56-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:36:22-78
 57
 58    <!-- For high-performance audio processing -->
 59    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-59-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:39:5-77
-59-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:39:22-74
+59-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:39:5-77
+59-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:39:22-74
 60
 61    <!-- suppress DeprecatedClassUsageInspection -->
 62    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
@@ -144,510 +144,487 @@
 81-->[androidx.core:core:1.12.0] C:\Users\redga\.gradle\caches\transforms-3\89ba8235540c75c9797a5590f90f605d\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
 82
 83    <application
-83-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:41:5-116:19
+83-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:41:5-105:19
 84        android:allowBackup="true"
-84-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:42:9-35
+84-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:42:9-35
 85        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 85-->[androidx.core:core:1.12.0] C:\Users\redga\.gradle\caches\transforms-3\89ba8235540c75c9797a5590f90f605d\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 86        android:dataExtractionRules="@xml/data_extraction_rules"
-86-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:43:9-65
+86-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:43:9-65
 87        android:debuggable="true"
 88        android:extractNativeLibs="false"
 89        android:fullBackupContent="@xml/backup_rules"
-89-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:44:9-54
+89-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:44:9-54
 90        android:label="@string/app_name"
-90-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:45:9-41
+90-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:45:9-41
 91        android:requestLegacyExternalStorage="true"
-91-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:49:9-52
+91-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:49:9-52
 92        android:supportsRtl="true"
-92-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:46:9-35
+92-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:46:9-35
 93        android:theme="@style/Theme.GibberLink"
-93-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:47:9-48
+93-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:47:9-48
 94        android:usesCleartextTraffic="true" >
-94-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:48:9-44
+94-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:48:9-44
 95
 96        <!-- Main activity -->
 97        <activity
-97-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:52:9-60:20
+97-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:52:9-60:20
 98            android:name="com.Rgibberlink.MainActivity"
-98-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:53:13-41
+98-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:53:13-41
 99            android:exported="true"
-99-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:54:13-36
+99-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:54:13-36
 100            android:theme="@style/Theme.GibberLink" >
-100-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:55:13-52
+100-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:55:13-52
 101            <intent-filter>
-101-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:56:13-59:29
+101-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:56:13-59:29
 102                <action android:name="android.intent.action.MAIN" />
-102-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:57:17-69
-102-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:57:25-66
+102-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:57:17-69
+102-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:57:25-66
 103
 104                <category android:name="android.intent.category.LAUNCHER" />
-104-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:58:17-77
-104-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:58:27-74
+104-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:58:17-77
+104-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:58:27-74
 105            </intent-filter>
 106        </activity>
 107
 108        <!-- Permission authorization activity for hardware access -->
 109        <activity
-109-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:63:9-67:52
+109-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:63:9-67:52
 110            android:name="com.Rgibberlink.PermissionAuthorizationActivity"
-110-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:64:13-60
+110-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:64:13-60
 111            android:exported="false"
-111-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:65:13-37
+111-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:65:13-37
 112            android:screenOrientation="portrait"
-112-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:67:13-49
+112-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:67:13-49
 113            android:theme="@style/Theme.GibberLink.NoActionBar" />
-113-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:66:13-64
+113-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:66:13-64
 114
 115        <!-- Face validation activity for human presence verification -->
 116        <activity
-116-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:70:9-74:52
+116-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:70:9-74:52
 117            android:name="com.Rgibberlink.FaceValidationActivity"
-117-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:71:13-51
+117-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:71:13-51
 118            android:exported="false"
-118-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:72:13-37
+118-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:72:13-37
 119            android:screenOrientation="portrait"
-119-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:74:13-49
+119-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:74:13-49
 120            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-120-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:73:13-71
+120-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:73:13-71
 121
-122        <!-- Background service for continuous hardware monitoring -->
-123        <service
-123-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:77:9-81:65
-124            android:name="com.Rgibberlink.HardwareMonitoringService"
-124-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:78:13-54
-125            android:enabled="true"
-125-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:79:13-35
-126            android:exported="false"
-126-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:80:13-37
-127            android:foregroundServiceType="camera|microphone" />
-127-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:81:13-62
+122        <!-- Range detection activity for ultrasonic ranging and laser control -->
+123        <activity
+123-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:77:9-81:52
+124            android:name="com.Rgibberlink.RangeDetectionActivity"
+124-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:78:13-51
+125            android:exported="false"
+125-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:79:13-37
+126            android:screenOrientation="portrait"
+126-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:81:13-49
+127            android:theme="@style/Theme.GibberLink.NoActionBar" />
+127-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:80:13-64
 128
-129        <!-- Broadcast receiver for hardware events -->
-130        <receiver
-130-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:84:9-93:20
-131            android:name="com.Rgibberlink.HardwareEventReceiver"
-131-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:85:13-50
-132            android:enabled="true"
-132-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:86:13-35
-133            android:exported="false" >
-133-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:87:13-37
-134            <intent-filter>
-134-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:88:13-92:29
-135                <action android:name="com.gibberlink.HARDWARE_EVENT" />
-135-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:89:17-72
-135-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:89:25-69
-136                <action android:name="com.gibberlink.SAFETY_VIOLATION" />
-136-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:90:17-74
-136-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:90:25-71
-137                <action android:name="android.intent.action.BATTERY_LOW" />
-137-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:91:17-76
-137-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:91:25-73
-138            </intent-filter>
-139        </receiver>
-140
-141        <!-- Meta-data for hardware capabilities -->
+129        <!-- Meta-data for hardware capabilities -->
+130        <meta-data
+130-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:85:9-87:36
+131            android:name="com.gibberlink.long_range_supported"
+131-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:86:13-63
+132            android:value="true" />
+132-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:87:13-33
+133        <meta-data
+133-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:89:9-91:36
+134            android:name="com.gibberlink.ultrasonic_beam_supported"
+134-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:90:13-68
+135            android:value="true" />
+135-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:91:13-33
+136        <meta-data
+136-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:93:9-95:36
+137            android:name="com.gibberlink.laser_modulation_supported"
+137-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:94:13-69
+138            android:value="true" />
+138-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:95:13-33
+139        <meta-data
+139-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:97:9-99:36
+140            android:name="com.gibberlink.parametric_audio_supported"
+140-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:98:13-69
+141            android:value="true" />
+141-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:99:13-33
 142        <meta-data
-142-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:96:9-98:36
-143            android:name="com.gibberlink.long_range_supported"
-143-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:97:13-63
+142-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:101:9-103:36
+143            android:name="com.gibberlink.hardware_safety_monitoring"
+143-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:102:13-69
 144            android:value="true" />
-144-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:98:13-33
-145        <meta-data
-145-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:100:9-102:36
-146            android:name="com.gibberlink.ultrasonic_beam_supported"
-146-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:101:13-68
-147            android:value="true" />
-147-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:102:13-33
-148        <meta-data
-148-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:104:9-106:36
-149            android:name="com.gibberlink.laser_modulation_supported"
-149-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:105:13-69
-150            android:value="true" />
-150-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:106:13-33
-151        <meta-data
-151-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:108:9-110:36
-152            android:name="com.gibberlink.parametric_audio_supported"
-152-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:109:13-69
-153            android:value="true" />
-153-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:110:13-33
-154        <meta-data
-154-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:112:9-114:36
-155            android:name="com.gibberlink.hardware_safety_monitoring"
-155-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:113:13-69
-156            android:value="true" />
-156-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:114:13-33
-157
-158        <!--
-159        Service for holding metadata. Cannot be instantiated.
-160        Metadata will be merged from other manifests.
-161        -->
-162        <service
-162-->[androidx.camera:camera-core:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\a3206da6d33d78367ca9e8f76732e4a7\transformed\jetified-camera-core-1.3.1\AndroidManifest.xml:29:9-33:78
-163            android:name="androidx.camera.core.impl.MetadataHolderService"
-163-->[androidx.camera:camera-core:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\a3206da6d33d78367ca9e8f76732e4a7\transformed\jetified-camera-core-1.3.1\AndroidManifest.xml:30:13-75
-164            android:enabled="false"
-164-->[androidx.camera:camera-core:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\a3206da6d33d78367ca9e8f76732e4a7\transformed\jetified-camera-core-1.3.1\AndroidManifest.xml:31:13-36
-165            android:exported="false" >
-165-->[androidx.camera:camera-core:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\a3206da6d33d78367ca9e8f76732e4a7\transformed\jetified-camera-core-1.3.1\AndroidManifest.xml:32:13-37
-166            <meta-data
-166-->[androidx.camera:camera-camera2:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\adfab374548e599f0649eea95b2184b6\transformed\jetified-camera-camera2-1.3.1\AndroidManifest.xml:30:13-32:89
-167                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
-167-->[androidx.camera:camera-camera2:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\adfab374548e599f0649eea95b2184b6\transformed\jetified-camera-camera2-1.3.1\AndroidManifest.xml:31:17-103
-168                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
-168-->[androidx.camera:camera-camera2:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\adfab374548e599f0649eea95b2184b6\transformed\jetified-camera-camera2-1.3.1\AndroidManifest.xml:32:17-86
-169        </service>
-170        <service
-170-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:9:9-15:19
-171            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
-171-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:10:13-91
-172            android:directBootAware="true"
-172-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:17:13-43
-173            android:exported="false" >
-173-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:11:13-37
-174            <meta-data
-174-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:12:13-14:85
-175                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
-175-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:13:17-120
-176                android:value="com.google.firebase.components.ComponentRegistrar" />
-176-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:14:17-82
-177            <meta-data
-177-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] C:\Users\redga\.gradle\caches\transforms-3\a03b3cccaf4a735d3f5346e5407a59d1\transformed\jetified-play-services-mlkit-face-detection-17.0.1\AndroidManifest.xml:12:13-14:85
-178                android:name="com.google.firebase.components:com.google.mlkit.vision.face.internal.FaceRegistrar"
-178-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] C:\Users\redga\.gradle\caches\transforms-3\a03b3cccaf4a735d3f5346e5407a59d1\transformed\jetified-play-services-mlkit-face-detection-17.0.1\AndroidManifest.xml:13:17-114
-179                android:value="com.google.firebase.components.ComponentRegistrar" />
-179-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] C:\Users\redga\.gradle\caches\transforms-3\a03b3cccaf4a735d3f5346e5407a59d1\transformed\jetified-play-services-mlkit-face-detection-17.0.1\AndroidManifest.xml:14:17-82
-180            <meta-data
-180-->[com.google.mlkit:vision-common:17.3.0] C:\Users\redga\.gradle\caches\transforms-3\be2c75024d3cfd1807f5440a3b68cbea\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:12:13-14:85
-181                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
-181-->[com.google.mlkit:vision-common:17.3.0] C:\Users\redga\.gradle\caches\transforms-3\be2c75024d3cfd1807f5440a3b68cbea\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:13:17-124
-182                android:value="com.google.firebase.components.ComponentRegistrar" />
-182-->[com.google.mlkit:vision-common:17.3.0] C:\Users\redga\.gradle\caches\transforms-3\be2c75024d3cfd1807f5440a3b68cbea\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:14:17-82
-183            <meta-data
-183-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:20:13-22:85
-184                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
-184-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:21:17-120
-185                android:value="com.google.firebase.components.ComponentRegistrar" />
-185-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:22:17-82
-186        </service>
-187
-188        <provider
-188-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:9:9-13:38
-189            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-189-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:10:13-78
-190            android:authorities="com.Rgibberlink.mlkitinitprovider"
-190-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:11:13-69
-191            android:exported="false"
-191-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:12:13-37
-192            android:initOrder="99" />
-192-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:13:13-35
-193
-194        <activity
-194-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\eabfb2794aa32c1f7af086a5499ce54a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
-195            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-195-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\eabfb2794aa32c1f7af086a5499ce54a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
-196            android:exported="false"
-196-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\eabfb2794aa32c1f7af086a5499ce54a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
-197            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-197-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\eabfb2794aa32c1f7af086a5499ce54a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
-198
-199        <meta-data
-199-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\b86cea2c1c92d9540a345e755d531000\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
-200            android:name="com.google.android.gms.version"
-200-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\b86cea2c1c92d9540a345e755d531000\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
-201            android:value="@integer/google_play_services_version" />
-201-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\b86cea2c1c92d9540a345e755d531000\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
-202
-203        <provider
-203-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:29:9-37:20
-204            android:name="androidx.startup.InitializationProvider"
-204-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:30:13-67
-205            android:authorities="com.Rgibberlink.androidx-startup"
-205-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:31:13-68
-206            android:exported="false" >
-206-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:32:13-37
-207            <meta-data
-207-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:34:13-36:52
-208                android:name="androidx.work.WorkManagerInitializer"
-208-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:35:17-68
-209                android:value="androidx.startup" />
-209-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:36:17-49
-210            <meta-data
-210-->[androidx.emoji2:emoji2:1.2.0] C:\Users\redga\.gradle\caches\transforms-3\ed2d6f30ccf94fecd2621b90f3760f8d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-211                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-211-->[androidx.emoji2:emoji2:1.2.0] C:\Users\redga\.gradle\caches\transforms-3\ed2d6f30ccf94fecd2621b90f3760f8d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
-212                android:value="androidx.startup" />
-212-->[androidx.emoji2:emoji2:1.2.0] C:\Users\redga\.gradle\caches\transforms-3\ed2d6f30ccf94fecd2621b90f3760f8d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
-213            <meta-data
-213-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\redga\.gradle\caches\transforms-3\57d26f9221c31062344f38675dcf676b\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
-214                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-214-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\redga\.gradle\caches\transforms-3\57d26f9221c31062344f38675dcf676b\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
-215                android:value="androidx.startup" />
-215-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\redga\.gradle\caches\transforms-3\57d26f9221c31062344f38675dcf676b\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
-216            <meta-data
-216-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
-217                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-217-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
-218                android:value="androidx.startup" />
-218-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
-219        </provider>
-220
-221        <service
-221-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:39:9-45:35
-222            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
-222-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:40:13-88
-223            android:directBootAware="false"
-223-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:41:13-44
-224            android:enabled="@bool/enable_system_alarm_service_default"
-224-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:42:13-72
-225            android:exported="false" />
-225-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:43:13-37
-226        <service
-226-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:46:9-52:35
-227            android:name="androidx.work.impl.background.systemjob.SystemJobService"
-227-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:47:13-84
+144-->C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\src\main\AndroidManifest.xml:103:13-33
+145
+146        <!--
+147        Service for holding metadata. Cannot be instantiated.
+148        Metadata will be merged from other manifests.
+149        -->
+150        <service
+150-->[androidx.camera:camera-core:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\a3206da6d33d78367ca9e8f76732e4a7\transformed\jetified-camera-core-1.3.1\AndroidManifest.xml:29:9-33:78
+151            android:name="androidx.camera.core.impl.MetadataHolderService"
+151-->[androidx.camera:camera-core:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\a3206da6d33d78367ca9e8f76732e4a7\transformed\jetified-camera-core-1.3.1\AndroidManifest.xml:30:13-75
+152            android:enabled="false"
+152-->[androidx.camera:camera-core:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\a3206da6d33d78367ca9e8f76732e4a7\transformed\jetified-camera-core-1.3.1\AndroidManifest.xml:31:13-36
+153            android:exported="false" >
+153-->[androidx.camera:camera-core:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\a3206da6d33d78367ca9e8f76732e4a7\transformed\jetified-camera-core-1.3.1\AndroidManifest.xml:32:13-37
+154            <meta-data
+154-->[androidx.camera:camera-camera2:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\adfab374548e599f0649eea95b2184b6\transformed\jetified-camera-camera2-1.3.1\AndroidManifest.xml:30:13-32:89
+155                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+155-->[androidx.camera:camera-camera2:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\adfab374548e599f0649eea95b2184b6\transformed\jetified-camera-camera2-1.3.1\AndroidManifest.xml:31:17-103
+156                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+156-->[androidx.camera:camera-camera2:1.3.1] C:\Users\redga\.gradle\caches\transforms-3\adfab374548e599f0649eea95b2184b6\transformed\jetified-camera-camera2-1.3.1\AndroidManifest.xml:32:17-86
+157        </service>
+158        <service
+158-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:9:9-15:19
+159            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+159-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:10:13-91
+160            android:directBootAware="true"
+160-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:17:13-43
+161            android:exported="false" >
+161-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:11:13-37
+162            <meta-data
+162-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:12:13-14:85
+163                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
+163-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:13:17-120
+164                android:value="com.google.firebase.components.ComponentRegistrar" />
+164-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] C:\Users\redga\.gradle\caches\transforms-3\a1a6b998832150ac89085402c548723a\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.0\AndroidManifest.xml:14:17-82
+165            <meta-data
+165-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] C:\Users\redga\.gradle\caches\transforms-3\a03b3cccaf4a735d3f5346e5407a59d1\transformed\jetified-play-services-mlkit-face-detection-17.0.1\AndroidManifest.xml:12:13-14:85
+166                android:name="com.google.firebase.components:com.google.mlkit.vision.face.internal.FaceRegistrar"
+166-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] C:\Users\redga\.gradle\caches\transforms-3\a03b3cccaf4a735d3f5346e5407a59d1\transformed\jetified-play-services-mlkit-face-detection-17.0.1\AndroidManifest.xml:13:17-114
+167                android:value="com.google.firebase.components.ComponentRegistrar" />
+167-->[com.google.android.gms:play-services-mlkit-face-detection:17.0.1] C:\Users\redga\.gradle\caches\transforms-3\a03b3cccaf4a735d3f5346e5407a59d1\transformed\jetified-play-services-mlkit-face-detection-17.0.1\AndroidManifest.xml:14:17-82
+168            <meta-data
+168-->[com.google.mlkit:vision-common:17.3.0] C:\Users\redga\.gradle\caches\transforms-3\be2c75024d3cfd1807f5440a3b68cbea\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:12:13-14:85
+169                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+169-->[com.google.mlkit:vision-common:17.3.0] C:\Users\redga\.gradle\caches\transforms-3\be2c75024d3cfd1807f5440a3b68cbea\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:13:17-124
+170                android:value="com.google.firebase.components.ComponentRegistrar" />
+170-->[com.google.mlkit:vision-common:17.3.0] C:\Users\redga\.gradle\caches\transforms-3\be2c75024d3cfd1807f5440a3b68cbea\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:14:17-82
+171            <meta-data
+171-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:20:13-22:85
+172                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+172-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:21:17-120
+173                android:value="com.google.firebase.components.ComponentRegistrar" />
+173-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:22:17-82
+174        </service>
+175
+176        <provider
+176-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:9:9-13:38
+177            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+177-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:10:13-78
+178            android:authorities="com.Rgibberlink.mlkitinitprovider"
+178-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:11:13-69
+179            android:exported="false"
+179-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:12:13-37
+180            android:initOrder="99" />
+180-->[com.google.mlkit:common:18.9.0] C:\Users\redga\.gradle\caches\transforms-3\6a1ecf825aea3c1702115a432343fa48\transformed\jetified-common-18.9.0\AndroidManifest.xml:13:13-35
+181
+182        <activity
+182-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\eabfb2794aa32c1f7af086a5499ce54a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+183            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+183-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\eabfb2794aa32c1f7af086a5499ce54a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+184            android:exported="false"
+184-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\eabfb2794aa32c1f7af086a5499ce54a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+185            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+185-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\eabfb2794aa32c1f7af086a5499ce54a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+186
+187        <meta-data
+187-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\b86cea2c1c92d9540a345e755d531000\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+188            android:name="com.google.android.gms.version"
+188-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\b86cea2c1c92d9540a345e755d531000\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+189            android:value="@integer/google_play_services_version" />
+189-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\redga\.gradle\caches\transforms-3\b86cea2c1c92d9540a345e755d531000\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+190
+191        <provider
+191-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:29:9-37:20
+192            android:name="androidx.startup.InitializationProvider"
+192-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:30:13-67
+193            android:authorities="com.Rgibberlink.androidx-startup"
+193-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:31:13-68
+194            android:exported="false" >
+194-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:32:13-37
+195            <meta-data
+195-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:34:13-36:52
+196                android:name="androidx.work.WorkManagerInitializer"
+196-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:35:17-68
+197                android:value="androidx.startup" />
+197-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:36:17-49
+198            <meta-data
+198-->[androidx.emoji2:emoji2:1.2.0] C:\Users\redga\.gradle\caches\transforms-3\ed2d6f30ccf94fecd2621b90f3760f8d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+199                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+199-->[androidx.emoji2:emoji2:1.2.0] C:\Users\redga\.gradle\caches\transforms-3\ed2d6f30ccf94fecd2621b90f3760f8d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+200                android:value="androidx.startup" />
+200-->[androidx.emoji2:emoji2:1.2.0] C:\Users\redga\.gradle\caches\transforms-3\ed2d6f30ccf94fecd2621b90f3760f8d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+201            <meta-data
+201-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\redga\.gradle\caches\transforms-3\57d26f9221c31062344f38675dcf676b\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+202                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+202-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\redga\.gradle\caches\transforms-3\57d26f9221c31062344f38675dcf676b\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+203                android:value="androidx.startup" />
+203-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\redga\.gradle\caches\transforms-3\57d26f9221c31062344f38675dcf676b\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+204            <meta-data
+204-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+205                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+205-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+206                android:value="androidx.startup" />
+206-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+207        </provider>
+208
+209        <service
+209-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:39:9-45:35
+210            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+210-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:40:13-88
+211            android:directBootAware="false"
+211-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:41:13-44
+212            android:enabled="@bool/enable_system_alarm_service_default"
+212-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:42:13-72
+213            android:exported="false" />
+213-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:43:13-37
+214        <service
+214-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:46:9-52:35
+215            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+215-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:47:13-84
+216            android:directBootAware="false"
+216-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:48:13-44
+217            android:enabled="@bool/enable_system_job_service_default"
+217-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:49:13-70
+218            android:exported="true"
+218-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:50:13-36
+219            android:permission="android.permission.BIND_JOB_SERVICE" />
+219-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:51:13-69
+220        <service
+220-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:53:9-59:35
+221            android:name="androidx.work.impl.foreground.SystemForegroundService"
+221-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:54:13-81
+222            android:directBootAware="false"
+222-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:55:13-44
+223            android:enabled="@bool/enable_system_foreground_service_default"
+223-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:56:13-77
+224            android:exported="false" />
+224-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:57:13-37
+225
+226        <receiver
+226-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:61:9-66:35
+227            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+227-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:62:13-88
 228            android:directBootAware="false"
-228-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:48:13-44
-229            android:enabled="@bool/enable_system_job_service_default"
-229-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:49:13-70
-230            android:exported="true"
-230-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:50:13-36
-231            android:permission="android.permission.BIND_JOB_SERVICE" />
-231-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:51:13-69
-232        <service
-232-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:53:9-59:35
-233            android:name="androidx.work.impl.foreground.SystemForegroundService"
-233-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:54:13-81
-234            android:directBootAware="false"
-234-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:55:13-44
-235            android:enabled="@bool/enable_system_foreground_service_default"
-235-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:56:13-77
-236            android:exported="false" />
-236-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:57:13-37
-237
-238        <receiver
-238-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:61:9-66:35
-239            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
-239-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:62:13-88
-240            android:directBootAware="false"
-240-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:63:13-44
-241            android:enabled="true"
-241-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:64:13-35
-242            android:exported="false" />
-242-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:65:13-37
-243        <receiver
-243-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:67:9-77:20
-244            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
-244-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:68:13-106
-245            android:directBootAware="false"
-245-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:69:13-44
-246            android:enabled="false"
-246-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:70:13-36
-247            android:exported="false" >
-247-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:71:13-37
-248            <intent-filter>
-248-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:73:13-76:29
-249                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-249-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:74:17-87
-249-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:74:25-84
-250                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-250-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:75:17-90
-250-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:75:25-87
-251            </intent-filter>
-252        </receiver>
-253        <receiver
-253-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:78:9-88:20
-254            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
-254-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:79:13-104
-255            android:directBootAware="false"
-255-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:80:13-44
-256            android:enabled="false"
-256-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:81:13-36
-257            android:exported="false" >
-257-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:82:13-37
-258            <intent-filter>
-258-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:84:13-87:29
-259                <action android:name="android.intent.action.BATTERY_OKAY" />
-259-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:85:17-77
-259-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:85:25-74
-260                <action android:name="android.intent.action.BATTERY_LOW" />
-260-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:91:17-76
-260-->D:\_ APP\RealGibber\android-app\app\src\main\AndroidManifest.xml:91:25-73
-261            </intent-filter>
-262        </receiver>
-263        <receiver
-263-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:89:9-99:20
-264            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
-264-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:90:13-104
-265            android:directBootAware="false"
-265-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:91:13-44
-266            android:enabled="false"
-266-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:92:13-36
-267            android:exported="false" >
-267-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:93:13-37
-268            <intent-filter>
-268-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:95:13-98:29
-269                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-269-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:96:17-83
-269-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:96:25-80
-270                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
-270-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:97:17-82
-270-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:97:25-79
-271            </intent-filter>
-272        </receiver>
-273        <receiver
-273-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:100:9-109:20
-274            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
-274-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:101:13-103
-275            android:directBootAware="false"
-275-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:102:13-44
-276            android:enabled="false"
-276-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:103:13-36
-277            android:exported="false" >
-277-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:104:13-37
-278            <intent-filter>
-278-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:106:13-108:29
-279                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-279-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:107:17-79
-279-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:107:25-76
-280            </intent-filter>
-281        </receiver>
-282        <receiver
-282-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:110:9-121:20
-283            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
-283-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:111:13-88
-284            android:directBootAware="false"
-284-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:112:13-44
-285            android:enabled="false"
-285-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:113:13-36
-286            android:exported="false" >
-286-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:114:13-37
-287            <intent-filter>
-287-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:116:13-120:29
-288                <action android:name="android.intent.action.BOOT_COMPLETED" />
-288-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:117:17-79
-288-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:117:25-76
-289                <action android:name="android.intent.action.TIME_SET" />
-289-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:118:17-73
-289-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:118:25-70
-290                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-290-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:119:17-81
-290-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:119:25-78
-291            </intent-filter>
-292        </receiver>
-293        <receiver
-293-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:122:9-131:20
-294            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
-294-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:123:13-99
-295            android:directBootAware="false"
-295-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:124:13-44
-296            android:enabled="@bool/enable_system_alarm_service_default"
-296-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:125:13-72
-297            android:exported="false" >
-297-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:126:13-37
-298            <intent-filter>
-298-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:128:13-130:29
-299                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
-299-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:129:17-98
-299-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:129:25-95
-300            </intent-filter>
-301        </receiver>
-302        <receiver
-302-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:132:9-142:20
-303            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
-303-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:133:13-78
-304            android:directBootAware="false"
-304-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:134:13-44
-305            android:enabled="true"
-305-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:135:13-35
-306            android:exported="true"
-306-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:136:13-36
-307            android:permission="android.permission.DUMP" >
-307-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:137:13-57
-308            <intent-filter>
-308-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:139:13-141:29
-309                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
-309-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:140:17-88
-309-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:140:25-85
-310            </intent-filter>
-311        </receiver>
-312
-313        <service
-313-->[androidx.room:room-runtime:2.5.0] C:\Users\redga\.gradle\caches\transforms-3\acd70bcab083cfbb5399951b9236bcc9\transformed\room-runtime-2.5.0\AndroidManifest.xml:24:9-28:63
-314            android:name="androidx.room.MultiInstanceInvalidationService"
-314-->[androidx.room:room-runtime:2.5.0] C:\Users\redga\.gradle\caches\transforms-3\acd70bcab083cfbb5399951b9236bcc9\transformed\room-runtime-2.5.0\AndroidManifest.xml:25:13-74
-315            android:directBootAware="true"
-315-->[androidx.room:room-runtime:2.5.0] C:\Users\redga\.gradle\caches\transforms-3\acd70bcab083cfbb5399951b9236bcc9\transformed\room-runtime-2.5.0\AndroidManifest.xml:26:13-43
-316            android:exported="false" />
-316-->[androidx.room:room-runtime:2.5.0] C:\Users\redga\.gradle\caches\transforms-3\acd70bcab083cfbb5399951b9236bcc9\transformed\room-runtime-2.5.0\AndroidManifest.xml:27:13-37
-317
-318        <receiver
-318-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
-319            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-319-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
-320            android:directBootAware="false"
-320-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
-321            android:enabled="true"
-321-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
-322            android:exported="true"
-322-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
-323            android:permission="android.permission.DUMP" >
-323-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
-324            <intent-filter>
-324-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
-325                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-325-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
-325-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
-326            </intent-filter>
-327            <intent-filter>
-327-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
-328                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-328-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
-328-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
-329            </intent-filter>
-330            <intent-filter>
-330-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
-331                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-331-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
-331-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
-332            </intent-filter>
-333            <intent-filter>
-333-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
-334                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-334-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
-334-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
-335            </intent-filter>
-336        </receiver>
-337
-338        <service
-338-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:29:9-35:19
-339            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-339-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:30:13-103
-340            android:exported="false" >
-340-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:31:13-37
-341            <meta-data
-341-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:32:13-34:39
-342                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-342-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:33:17-94
-343                android:value="cct" />
-343-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:34:17-36
-344        </service>
-345        <service
-345-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:26:9-30:19
-346            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-346-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:27:13-117
-347            android:exported="false"
-347-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:28:13-37
-348            android:permission="android.permission.BIND_JOB_SERVICE" >
-348-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:29:13-69
-349        </service>
-350
-351        <receiver
-351-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:32:9-34:40
-352            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-352-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:33:13-132
-353            android:exported="false" />
-353-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:34:13-37
-354    </application>
-355
-356</manifest>
+228-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:63:13-44
+229            android:enabled="true"
+229-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:64:13-35
+230            android:exported="false" />
+230-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:65:13-37
+231        <receiver
+231-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:67:9-77:20
+232            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+232-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:68:13-106
+233            android:directBootAware="false"
+233-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:69:13-44
+234            android:enabled="false"
+234-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:70:13-36
+235            android:exported="false" >
+235-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:71:13-37
+236            <intent-filter>
+236-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:73:13-76:29
+237                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+237-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:74:17-87
+237-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:74:25-84
+238                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+238-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:75:17-90
+238-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:75:25-87
+239            </intent-filter>
+240        </receiver>
+241        <receiver
+241-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:78:9-88:20
+242            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+242-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:79:13-104
+243            android:directBootAware="false"
+243-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:80:13-44
+244            android:enabled="false"
+244-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:81:13-36
+245            android:exported="false" >
+245-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:82:13-37
+246            <intent-filter>
+246-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:84:13-87:29
+247                <action android:name="android.intent.action.BATTERY_OKAY" />
+247-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:85:17-77
+247-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:85:25-74
+248                <action android:name="android.intent.action.BATTERY_LOW" />
+248-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:86:17-76
+248-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:86:25-73
+249            </intent-filter>
+250        </receiver>
+251        <receiver
+251-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:89:9-99:20
+252            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+252-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:90:13-104
+253            android:directBootAware="false"
+253-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:91:13-44
+254            android:enabled="false"
+254-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:92:13-36
+255            android:exported="false" >
+255-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:93:13-37
+256            <intent-filter>
+256-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:95:13-98:29
+257                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+257-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:96:17-83
+257-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:96:25-80
+258                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+258-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:97:17-82
+258-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:97:25-79
+259            </intent-filter>
+260        </receiver>
+261        <receiver
+261-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:100:9-109:20
+262            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+262-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:101:13-103
+263            android:directBootAware="false"
+263-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:102:13-44
+264            android:enabled="false"
+264-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:103:13-36
+265            android:exported="false" >
+265-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:104:13-37
+266            <intent-filter>
+266-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:106:13-108:29
+267                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+267-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:107:17-79
+267-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:107:25-76
+268            </intent-filter>
+269        </receiver>
+270        <receiver
+270-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:110:9-121:20
+271            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+271-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:111:13-88
+272            android:directBootAware="false"
+272-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:112:13-44
+273            android:enabled="false"
+273-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:113:13-36
+274            android:exported="false" >
+274-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:114:13-37
+275            <intent-filter>
+275-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:116:13-120:29
+276                <action android:name="android.intent.action.BOOT_COMPLETED" />
+276-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:117:17-79
+276-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:117:25-76
+277                <action android:name="android.intent.action.TIME_SET" />
+277-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:118:17-73
+277-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:118:25-70
+278                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+278-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:119:17-81
+278-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:119:25-78
+279            </intent-filter>
+280        </receiver>
+281        <receiver
+281-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:122:9-131:20
+282            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+282-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:123:13-99
+283            android:directBootAware="false"
+283-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:124:13-44
+284            android:enabled="@bool/enable_system_alarm_service_default"
+284-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:125:13-72
+285            android:exported="false" >
+285-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:126:13-37
+286            <intent-filter>
+286-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:128:13-130:29
+287                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+287-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:129:17-98
+287-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:129:25-95
+288            </intent-filter>
+289        </receiver>
+290        <receiver
+290-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:132:9-142:20
+291            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+291-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:133:13-78
+292            android:directBootAware="false"
+292-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:134:13-44
+293            android:enabled="true"
+293-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:135:13-35
+294            android:exported="true"
+294-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:136:13-36
+295            android:permission="android.permission.DUMP" >
+295-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:137:13-57
+296            <intent-filter>
+296-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:139:13-141:29
+297                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+297-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:140:17-88
+297-->[androidx.work:work-runtime:2.9.0] C:\Users\redga\.gradle\caches\transforms-3\a105a821b35261175f8f11b28b1b1fa2\transformed\work-runtime-2.9.0\AndroidManifest.xml:140:25-85
+298            </intent-filter>
+299        </receiver>
+300
+301        <service
+301-->[androidx.room:room-runtime:2.5.0] C:\Users\redga\.gradle\caches\transforms-3\acd70bcab083cfbb5399951b9236bcc9\transformed\room-runtime-2.5.0\AndroidManifest.xml:24:9-28:63
+302            android:name="androidx.room.MultiInstanceInvalidationService"
+302-->[androidx.room:room-runtime:2.5.0] C:\Users\redga\.gradle\caches\transforms-3\acd70bcab083cfbb5399951b9236bcc9\transformed\room-runtime-2.5.0\AndroidManifest.xml:25:13-74
+303            android:directBootAware="true"
+303-->[androidx.room:room-runtime:2.5.0] C:\Users\redga\.gradle\caches\transforms-3\acd70bcab083cfbb5399951b9236bcc9\transformed\room-runtime-2.5.0\AndroidManifest.xml:26:13-43
+304            android:exported="false" />
+304-->[androidx.room:room-runtime:2.5.0] C:\Users\redga\.gradle\caches\transforms-3\acd70bcab083cfbb5399951b9236bcc9\transformed\room-runtime-2.5.0\AndroidManifest.xml:27:13-37
+305
+306        <receiver
+306-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+307            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+307-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+308            android:directBootAware="false"
+308-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+309            android:enabled="true"
+309-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+310            android:exported="true"
+310-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+311            android:permission="android.permission.DUMP" >
+311-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+312            <intent-filter>
+312-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+313                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+313-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+313-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+314            </intent-filter>
+315            <intent-filter>
+315-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+316                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+316-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+316-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+317            </intent-filter>
+318            <intent-filter>
+318-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+319                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+319-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+319-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+320            </intent-filter>
+321            <intent-filter>
+321-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+322                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+322-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+322-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\redga\.gradle\caches\transforms-3\d8f2b95781bbd18e1ec0fc20d65a4694\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+323            </intent-filter>
+324        </receiver>
+325
+326        <service
+326-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:29:9-35:19
+327            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+327-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:30:13-103
+328            android:exported="false" >
+328-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:31:13-37
+329            <meta-data
+329-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:32:13-34:39
+330                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+330-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:33:17-94
+331                android:value="cct" />
+331-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\redga\.gradle\caches\transforms-3\6ce97105b443c0dd1602731a85f7b7ab\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:34:17-36
+332        </service>
+333        <service
+333-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:26:9-30:19
+334            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+334-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:27:13-117
+335            android:exported="false"
+335-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:28:13-37
+336            android:permission="android.permission.BIND_JOB_SERVICE" >
+336-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:29:13-69
+337        </service>
+338
+339        <receiver
+339-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:32:9-34:40
+340            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+340-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:33:13-132
+341            android:exported="false" />
+341-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\redga\.gradle\caches\transforms-3\b36ed397f94b28a09c8f02ce6c728c62\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:34:13-37
+342    </application>
+343
+344</manifest>

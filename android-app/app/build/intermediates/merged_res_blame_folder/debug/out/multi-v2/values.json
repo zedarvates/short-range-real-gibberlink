@@ -275,6 +275,25 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "2,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,791",
+                        "endLines": "13,18",
+                        "endColumns": "12,12",
+                        "endOffsets": "783,947"
+                    },
+                    "to": {
+                        "startLines": "6496,6508",
+                        "startColumns": "4,4",
+                        "startOffsets": "454482,455118",
+                        "endLines": "6507,6511",
+                        "endColumns": "12,12",
+                        "endOffsets": "455113,455271"
+                    }
+                },
+                {
                     "source": "C:\\Users\\redga\\.gradle\\caches\\transforms-3\\9294a5039400922b4f35055d7049c64a\\transformed\\transition-1.2.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
@@ -361,25 +380,6 @@
                         "startOffsets": "126949",
                         "endColumns": "49",
                         "endOffsets": "126994"
-                    }
-                },
-                {
-                    "source": "D:\\_ APP\\RealGibber\\android-app\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "2,15",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,791",
-                        "endLines": "13,18",
-                        "endColumns": "12,12",
-                        "endOffsets": "783,947"
-                    },
-                    "to": {
-                        "startLines": "6496,6508",
-                        "startColumns": "4,4",
-                        "startOffsets": "454482,455118",
-                        "endLines": "6507,6511",
-                        "endColumns": "12,12",
-                        "endOffsets": "455113,455271"
                     }
                 },
                 {
@@ -478,7 +478,7 @@
                     }
                 },
                 {
-                    "source": "D:\\_ APP\\RealGibber\\android-app\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\redga\\Documents\\GitHub\\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\\android-app\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",

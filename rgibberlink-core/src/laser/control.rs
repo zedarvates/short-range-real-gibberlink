@@ -5,26 +5,10 @@
 use std::sync::Arc;
 use tokio::sync::Mutex;
 use reed_solomon_erasure::ReedSolomon;
-use crate::range_detector::{RangeDetector, RangeEnvironmentalConditions, RangeMeasurement};
+use crate::range_detector::{RangeDetector};
 use crate::optical_ecc::OpticalECC;
-
-/// Laser types for different applications
-#[derive(Debug, Clone, PartialEq)]
-pub enum LaserType {
-    Visible,
-    Infrared,
-    UV,
-}
-
-/// Modulation schemes for data encoding
-#[derive(Debug, Clone, PartialEq)]
-pub enum ModulationScheme {
-    Ook,           // On-Off Keying
-    Pwm,           // Pulse Width Modulation
-    QrProjection,  // QR code projection
-    Fsk,           // Frequency Shift Keying
-    Manchester,    // Manchester encoding
-}
+use super::types::{LaserType, ModulationScheme, ChannelDiagnostics};
+use crate::laser::AlignmentStatus;
 
 /// Laser configuration parameters
 #[derive(Debug, Clone)]
@@ -40,11 +24,83 @@ pub struct LaserConfig {
 
 impl Default for LaserConfig {
     fn default() -> Self {
+        Self::red() // Default to red laser
+    }
+}
+
+impl LaserConfig {
+    /// Create a red laser configuration (650nm)
+    pub fn red() -> Self {
         Self {
-            laser_type: LaserType::Visible,
+            laser_type: LaserType::Red,
             modulation_scheme: ModulationScheme::Ook,
             max_power_mw: 5.0,
-            wavelength_nm: 650, // Red visible light
+            wavelength_nm: 650,
+            beam_diameter_mm: 2.0,
+            range_meters: 100.0,
+            safety_enabled: true,
+        }
+    }
+
+    /// Create a green laser configuration (532nm)
+    pub fn green() -> Self {
+        Self {
+            laser_type: LaserType::Green,
+            modulation_scheme: ModulationScheme::Ook,
+            max_power_mw: 5.0,
+            wavelength_nm: 532,
+            beam_diameter_mm: 2.0,
+            range_meters: 100.0,
+            safety_enabled: true,
+        }
+    }
+
+    /// Create a blue laser configuration (450nm)
+    pub fn blue() -> Self {
+        Self {
+            laser_type: LaserType::Blue,
+            modulation_scheme: ModulationScheme::Ook,
+            max_power_mw: 5.0,
+            wavelength_nm: 450,
+            beam_diameter_mm: 2.0,
+            range_meters: 100.0,
+            safety_enabled: true,
+        }
+    }
+
+    /// Create an infrared laser configuration
+    pub fn infrared() -> Self {
+        Self {
+            laser_type: LaserType::Infrared,
+            modulation_scheme: ModulationScheme::Ook,
+            max_power_mw: 10.0, // IR can handle higher power
+            wavelength_nm: 980, // Common IR wavelength
+            beam_diameter_mm: 2.0,
+            range_meters: 200.0, // IR has better range
+            safety_enabled: true,
+        }
+    }
+
+    /// Create a UV laser configuration
+    pub fn uv() -> Self {
+        Self {
+            laser_type: LaserType::UV,
+            modulation_scheme: ModulationScheme::Ook,
+            max_power_mw: 1.0, // UV lasers are typically lower power
+            wavelength_nm: 405, // Near UV
+            beam_diameter_mm: 1.5,
+            range_meters: 50.0, // UV has shorter range
+            safety_enabled: true,
+        }
+    }
+
+    /// Create an external/custom laser configuration
+    pub fn external(wavelength_nm: u32) -> Self {
+        Self {
+            laser_type: LaserType::External,
+            modulation_scheme: ModulationScheme::Ook,
+            max_power_mw: 5.0,
+            wavelength_nm,
             beam_diameter_mm: 2.0,
             range_meters: 100.0,
             safety_enabled: true,
@@ -104,7 +160,7 @@ pub struct LaserEngine {
     pub is_initialized: bool,
     pub current_power_mw: f32,
     pub modulation_scheme: ModulationScheme,
-    pub rs_codec: ReedSolomon,
+    pub rs_codec: ReedSolomon<reed_solomon_erasure::galois_8::Field>,
 }
 
 impl LaserEngine {
@@ -115,9 +171,9 @@ impl LaserEngine {
             .unwrap(); // This is safe as parameters are known good
 
         Self {
-            config,
+            config: config.clone(),
             rx_config,
-            optical_ecc: OpticalECC::new(Default::default()).unwrap(),
+            optical_ecc: OpticalECC::new(Default::default()),
             range_detector: None,
             is_initialized: false,
             current_power_mw: 0.0,
@@ -161,7 +217,7 @@ impl LaserEngine {
     }
 
     /// Receive data using the configured reception method
-    pub async fn receive_data(&mut self, timeout_ms: u64) -> Result<Vec<u8>, LaserError> {
+    pub async fn receive_data(&mut self, _timeout_ms: u64) -> Result<Vec<u8>, LaserError> {
         if !self.is_initialized {
             return Err(LaserError::HardwareInit("Laser not initialized".to_string()));
         }
@@ -211,7 +267,7 @@ impl LaserEngine {
         Ok(vec![0xAA, 0x55]) // Dummy received data
     }
 
-    async fn transmit_qr_projection(&mut self, data: &[u8]) -> Result<(), LaserError> {
+    async fn transmit_qr_projection(&mut self, _data: &[u8]) -> Result<(), LaserError> {
         // QR projection logic would go here
         // This would involve generating QR codes and projecting them
         Ok(())
@@ -222,7 +278,7 @@ impl LaserEngine {
         Ok(vec![0xAA, 0x55]) // Dummy received data
     }
 
-    async fn transmit_fsk(&mut self, data: &[u8]) -> Result<(), LaserError> {
+    async fn transmit_fsk(&mut self, _data: &[u8]) -> Result<(), LaserError> {
         // FSK transmission logic would go here
         Ok(())
     }
@@ -232,7 +288,7 @@ impl LaserEngine {
         Ok(vec![0xAA, 0x55]) // Dummy received data
     }
 
-    async fn transmit_manchester(&mut self, data: &[u8]) -> Result<(), LaserError> {
+    async fn transmit_manchester(&mut self, _data: &[u8]) -> Result<(), LaserError> {
         // Manchester encoding transmission logic would go here
         Ok(())
     }
@@ -290,6 +346,24 @@ impl LaserEngine {
     /// Check if laser is active
     pub fn is_active(&self) -> bool {
         self.is_initialized && self.current_power_mw > 0.0
+    }
+
+    /// Get channel diagnostics
+    pub async fn get_channel_diagnostics(&self) -> ChannelDiagnostics {
+        ChannelDiagnostics {
+            signal_strength: 0.8, // Placeholder
+            alignment_quality: 0.9, // Placeholder
+            error_rate: 0.001, // Placeholder
+            last_update: tokio::time::Instant::now(),
+            alignment_status: AlignmentStatus {
+                is_aligned: true,
+                beam_position_x: 0.0,
+                beam_position_y: 0.0,
+                signal_strength: 0.8,
+                last_update: tokio::time::Instant::now(),
+            },
+            detected_failures: vec![], // No failures detected
+        }
     }
 }
 

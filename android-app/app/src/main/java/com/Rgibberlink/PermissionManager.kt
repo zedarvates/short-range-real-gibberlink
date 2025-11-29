@@ -33,7 +33,7 @@ class PermissionManager(private val context: Context) {
         private const val PREF_FAILED_ATTEMPTS = "failed_attempts"
         private const val PREF_LOCKOUT_TIME = "lockout_time"
         private const val PREF_DEFAULT_PIN = "9999"
-        private const val MAX_FAILED_ATTEMPTS = 3
+        const val MAX_FAILED_ATTEMPTS = 3
         private const val LOCKOUT_DURATION_MS = 300000L // 5 minutes
 
         // Permission constants matching the specs

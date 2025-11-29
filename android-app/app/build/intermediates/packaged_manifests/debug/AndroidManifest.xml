@@ -119,24 +119,12 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
-        <!-- Background service for continuous hardware monitoring -->
-        <service
-            android:name="com.Rgibberlink.HardwareMonitoringService"
-            android:enabled="true"
+        <!-- Range detection activity for ultrasonic ranging and laser control -->
+        <activity
+            android:name="com.Rgibberlink.RangeDetectionActivity"
             android:exported="false"
-            android:foregroundServiceType="camera|microphone" />
-
-        <!-- Broadcast receiver for hardware events -->
-        <receiver
-            android:name="com.Rgibberlink.HardwareEventReceiver"
-            android:enabled="true"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.gibberlink.HARDWARE_EVENT" />
-                <action android:name="com.gibberlink.SAFETY_VIOLATION" />
-                <action android:name="android.intent.action.BATTERY_LOW" />
-            </intent-filter>
-        </receiver>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.GibberLink.NoActionBar" />
 
         <!-- Meta-data for hardware capabilities -->
         <meta-data

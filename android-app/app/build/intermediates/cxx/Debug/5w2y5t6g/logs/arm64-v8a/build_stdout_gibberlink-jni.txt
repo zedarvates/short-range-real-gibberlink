@@ -1,2 +1,2 @@
-ninja: Entering directory `D:\_ APP\RealGibber\android-app\app\.cxx\Debug\5w2y5t6g\arm64-v8a'
+ninja: Entering directory `C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app\.cxx\Debug\5w2y5t6g\arm64-v8a'
 ninja: no work to do.

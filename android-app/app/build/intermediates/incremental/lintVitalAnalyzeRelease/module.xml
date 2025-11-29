@@ -1,6 +1,6 @@
 <lint-module
     format="1"
-    dir="D:\_ APP\RealGibber\android-app\app"
+    dir="C:\Users\redga\Documents\GitHub\RealGibberLink-Secure-air-gapped-short-range-comm-for-robots-drones\android-app\app"
     name=":app"
     type="APP"
     maven="RgibberLink Android:app:"

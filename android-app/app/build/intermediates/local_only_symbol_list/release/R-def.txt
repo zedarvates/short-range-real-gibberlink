@@ -9,8 +9,10 @@ id biometricNotice
 id biometricToggle
 id btnAuthenticate
 id btnAuthorize
+id btnCalibrate
 id btnDeny
 id btnSetup
+id btnStartStop
 id cancelButton
 id distanceText
 id duration30min
@@ -32,10 +34,16 @@ id pinCard
 id pinInput
 id previewView
 id progressBar
+id qualityScore
+id rangeCategory
+id rangeHistory
+id rangeValue
 id scopeAllVisible
 id scopeGroup
 id scopeThisGroup
 id scopeThisNode
+id signalStrength
+id statusIndicator
 id statusText
 id successOverlay
 id timeoutWarning
@@ -45,6 +53,7 @@ id warningText
 layout activity_face_validation
 layout activity_main
 layout activity_permission_authorization
+layout activity_range_detection
 string app_name
 style Theme.GibberLink
 style Theme.GibberLink.NoActionBar

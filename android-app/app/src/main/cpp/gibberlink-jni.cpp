@@ -238,8 +238,10 @@ bool validate_alignment_coords(jfloat x, jfloat y, const char* function_name) {
 class JNIGuard {
 private:
     std::mutex& mutex_;
-    bool locked_;
     const char* function_name_;
+
+public:
+    bool locked_;
 
 public:
     explicit JNIGuard(std::mutex& mutex, const char* function_name = nullptr)
